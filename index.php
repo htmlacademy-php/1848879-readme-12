@@ -6,6 +6,7 @@ $user_name = 'Владислав'; // укажите здесь ваше имя
 $cards = [
     [
         'id' => 0,
+        'user_id' => 0,
         'title' => 'Цитата',
         'type' => 'post-quote',
         'content' => 'Мы в жизни любим только раз, а после ищем лишь похожих',
@@ -15,15 +16,17 @@ $cards = [
     ],
     [
         'id' => 1,
+        'user_id' => 1,
         'title' => 'Игра престолов',
         'type' => 'post-text',
-        'content' => 'Не могу дождаться начала финального сезона своего любимого сериала!',
+        'content' => 'Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!',
         'name' => 'Владик',
         'img' => 'userpic.jpg',
 
     ],
     [
         'id' => 2,
+        'user_id' => 1,
         'title' => 'Наконец, обработал фотки!',
         'type' => 'post-photo',
         'content' => 'rock-medium.jpg',
@@ -33,6 +36,7 @@ $cards = [
     ],
     [
         'id' => 3,
+        'user_id' => 2,
         'title' => 'Моя мечта',
         'type' => 'post-photo',
         'content' => 'coast-medium.jpg',
@@ -42,6 +46,7 @@ $cards = [
     ],
     [
         'id' => 4,
+        'user_id' => 1,
         'title' => 'Лучшие курсы',
         'type' => 'post-link',
         'content' => 'www.htmlacademy.ru',
@@ -49,7 +54,28 @@ $cards = [
         'img' => 'userpic.jpg',
 
     ],
-]
+];
+
+function cropping_text($text, $long=300){
+
+    if(strlen($text) > $long) {
+        $arrays_symbols = explode(' ', $text);
+        $count = 0;
+        $sum = 0;
+        $new_words = [];
+
+        while($sum < $long){
+            $sum += strlen($arrays_symbols[$count]);
+            $new_words[] = $arrays_symbols[$count];
+            $count++;
+        }
+
+        return '<p>' .  implode(' ', $new_words) . '...</p>' . '<a class="post-text__more-link" href="#">Читать далее</a>';
+    }
+
+    return $text;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -343,38 +369,39 @@ $cards = [
         <div class="popular__posts">
 
             <?php foreach ($cards as $card): ?>
-                <article class="popular__post post <?= $card['type'] ?>">
+                <article class="popular__post post <?=$card['type']?>">
                     <header class="post__header">
-                        <h2><?= $card['title'] ?></h2>
+                        <h2><?=htmlspecialchars($card['title'])?></h2>
                     </header>
+
                     <div class="post__main">
                         <?php switch ($card['type']):
                             case 'post-quote': ?>
                                 <blockquote>
                                     <p>
-                                        <?=$card['content']?>
+                                        <?=htmlspecialchars($card['content'])?>
                                     </p>
                                     <cite>Неизвестный Автор</cite>
                                 </blockquote>
                                 <?php break; ?>
 
                             <?php case 'post-text': ?>
-                                <p><?=$card['content']?></p>
+                                <p><?=cropping_text(htmlspecialchars($card['content']))?></p>
                                 <?php break; ?>
 
                             <?php case 'post-link': ?>
                                 <div class="post-link__wrapper">
-                                    <a class="post-link__external" href="http://<?= $card['content'] ?>" title="Перейти по ссылке">
+                                    <a class="post-link__external" href="http://<?=$card['content']?>" title="Перейти по ссылке">
                                         <div class="post-link__info-wrapper">
                                             <div class="post-link__icon-wrapper">
                                                 <img src="https://www.google.com/s2/favicons?domain=vitadental.ru"
                                                      alt="Иконка">
                                             </div>
                                             <div class="post-link__info">
-                                                <h3><?= $card['title'] ?></h3>
+                                                <h3><?=htmlspecialchars($card['title'])?></h3>
                                             </div>
                                         </div>
-                                        <span><?=$card['content'] ?></span>
+                                        <span><?=htmlspecialchars($card['content'])?></span>
                                     </a>
                                 </div>
                                 <?php break; ?>
@@ -388,7 +415,7 @@ $cards = [
                             <?php case 'post-video': ?>
                                 <div class="post-video__block">
                                     <div class="post-video__preview">
-                                        <?= embed_youtube_cover(/* вставьте ссылку на видео */); ?>
+                                        <?=embed_youtube_cover(/* вставьте ссылку на видео */);?>
                                         <img src="img/coast-medium.jpg" alt="Превью к видео" width="360" height="188">
                                     </div>
                                     <a href="post-details.html" class="post-video__play-big button">
@@ -407,11 +434,11 @@ $cards = [
                             <a class="post__author-link" href="#" title="Автор">
                                 <div class="post__avatar-wrapper">
                                     <!--укажите путь к файлу аватара-->
-                                    <img class="post__author-avatar" src="img/<?= $card['img'] ?>"
+                                    <img class="post__author-avatar" src="img/<?=$card['img']?>"
                                          alt="Аватар пользователя">
                                 </div>
                                 <div class="post__info">
-                                    <b class="post__author-name"><?= $card['user'] ?></b>
+                                    <b class="post__author-name"><?=$card['user']?></b>
                                     <time class="post__time" datetime="">дата</time>
                                 </div>
                             </a>
