@@ -149,7 +149,7 @@
                 </div>
                 <footer class="post__footer">
                     <div class="post__author">
-                        <a class="post__author-link" href="#" title="Автор">
+                        <a class="post__author-link" href="#" title="<?=$card['name']?>">
                             <div class="post__avatar-wrapper">
                                 <!--укажите путь к файлу аватара-->
                                 <img class="post__author-avatar" src="img/<?=$card['img']?>"
@@ -157,7 +157,7 @@
                             </div>
                             <div class="post__info">
                                 <b class="post__author-name"><?=$card['user']?></b>
-                                <time class="post__time" datetime="">дата</time>
+                                <time class="post__time" datetime="<?=get_time_format(generate_random_date($card['id']))?>" title="<?=get_time_format(generate_random_date($card['id']))?>"><?=time_has_passed(generate_random_date($card['id']))?></time>
                             </div>
                         </a>
                     </div>

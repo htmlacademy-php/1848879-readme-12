@@ -1,10 +1,10 @@
 <?php
 
-require('helpers.php');
+require_once('settings.php');
 
 $is_auth = rand(0, 1);
 
-$user_name = 'Владислав'; // укажите здесь ваше имя
+$user_name = 'Владислав';
 
 $cards = [
     [
@@ -15,6 +15,7 @@ $cards = [
         'content' => 'Мы в жизни любим только раз, а после ищем лишь похожих',
         'name' => 'Лариса',
         'img' => 'userpic-larisa-small.jpg',
+        'time' => '2021-07-19 13:05',
 
     ],
     [
@@ -25,7 +26,7 @@ $cards = [
         'content' => 'Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!',
         'name' => 'Владик',
         'img' => 'userpic.jpg',
-
+        'time' => '2021-07-19 12:05',
     ],
     [
         'id' => 2,
@@ -35,7 +36,7 @@ $cards = [
         'content' => 'rock-medium.jpg',
         'name' => 'Виктор',
         'img' => 'userpic-mark.jpg',
-
+        'time' => '2021-07-05 13:05',
     ],
     [
         'id' => 3,
@@ -45,7 +46,7 @@ $cards = [
         'content' => 'coast-medium.jpg',
         'name' => 'Лариса',
         'img' => 'userpic-larisa-small.jpg',
-
+        'time' => '2021-04-19 13:05',
     ],
     [
         'id' => 4,
@@ -55,30 +56,9 @@ $cards = [
         'content' => 'www.htmlacademy.ru',
         'name' => 'Владик',
         'img' => 'userpic.jpg',
-
+        'time' => '2021-07-15 13:05',
     ],
 ];
-
-function cropping_text($text, $long=300){
-
-    if(strlen($text) > $long) {
-        $arrays_symbols = explode(' ', $text);
-        $count = 0;
-        $sum = 0;
-        $new_words = [];
-
-        while($sum < $long){
-            $sum += strlen($arrays_symbols[$count]);
-            $new_words[] = $arrays_symbols[$count];
-            $count++;
-        }
-
-        return '<p>' .  implode(' ', $new_words) . '...</p>' . '<a class="post-text__more-link" href="#">Читать далее</a>';
-    }
-
-    return $text;
-}
-
 
 $page_content = include_template('main.php', ['cards' => $cards]);
 
