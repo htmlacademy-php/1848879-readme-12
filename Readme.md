@@ -1,7 +1,7 @@
 # Личный проект «Readme»
 
 * Студент: [Владислав Вячеславович](https://up.htmlacademy.ru/php/12/user/1848879).
-* Наставник: `Анна Смоленцева`(https://htmlacademy.ru/profile/id1402027).
+* Наставник: `Максим Дзюба`(https://htmlacademy.ru/profile/id1176029).
 
 ---
 
