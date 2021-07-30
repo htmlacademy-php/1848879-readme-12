@@ -6,11 +6,11 @@ USE readme;
 
 CREATE TABLE users
 (
-    id       INT AUTO_INCREMENT PRIMARY KEY,
-    email    VARCHAR(128) NOT NULL UNIQUE,
-    name     CHAR(128)    NOT NULL,
-    password CHAR(128)    NOT NULL,
-    avatar_url   VARCHAR(255)
+    id         INT AUTO_INCREMENT PRIMARY KEY,
+    email      VARCHAR(128) NOT NULL UNIQUE,
+    name       CHAR(128)    NOT NULL,
+    password   CHAR(128)    NOT NULL,
+    avatar_url VARCHAR(255)
 );
 
 CREATE TABLE type_posts
@@ -25,10 +25,10 @@ CREATE TABLE posts
     id           INT AUTO_INCREMENT PRIMARY KEY,
     user_id      INT,
     title        VARCHAR(128) NOT NULL,
-    type_id         INT,
+    type_id      INT,
     content      TEXT         NOT NULL,
     name         VARCHAR(128),
-    file_id         VARCHAR(255),
+    file_id      VARCHAR(255),
     date         TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     views_amount INT,
     FOREIGN KEY (user_id) REFERENCES users (id),
