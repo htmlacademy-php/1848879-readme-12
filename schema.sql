@@ -67,7 +67,8 @@ CREATE TABLE subscriptions
     id          INT AUTO_INCREMENT PRIMARY KEY,
     user_id     INT,
     follower_id INT,
-    FOREIGN KEY (user_id) REFERENCES users (id)
+    FOREIGN KEY (user_id) REFERENCES users (id),
+    FOREIGN KEY (follower_id) REFERENCES users (id)
 );
 
 CREATE TABLE messages
