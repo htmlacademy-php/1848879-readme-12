@@ -41,60 +41,30 @@
                         <span>Все</span>
                     </a>
                 </li>
-                <li class="popular__filters-item filters__item">
-                    <a class="filters__button filters__button--photo button" href="#">
-                        <span class="visually-hidden">Фото</span>
-                        <svg class="filters__icon" width="22" height="18">
-                            <use xlink:href="#icon-filter-photo"></use>
-                        </svg>
-                    </a>
-                </li>
-                <li class="popular__filters-item filters__item">
-                    <a class="filters__button filters__button--video button" href="#">
-                        <span class="visually-hidden">Видео</span>
-                        <svg class="filters__icon" width="24" height="16">
-                            <use xlink:href="#icon-filter-video"></use>
-                        </svg>
-                    </a>
-                </li>
-                <li class="popular__filters-item filters__item">
-                    <a class="filters__button filters__button--text button" href="#">
-                        <span class="visually-hidden">Текст</span>
-                        <svg class="filters__icon" width="20" height="21">
-                            <use xlink:href="#icon-filter-text"></use>
-                        </svg>
-                    </a>
-                </li>
-                <li class="popular__filters-item filters__item">
-                    <a class="filters__button filters__button--quote button" href="#">
-                        <span class="visually-hidden">Цитата</span>
-                        <svg class="filters__icon" width="21" height="20">
-                            <use xlink:href="#icon-filter-quote"></use>
-                        </svg>
-                    </a>
-                </li>
-                <li class="popular__filters-item filters__item">
-                    <a class="filters__button filters__button--link button" href="#">
-                        <span class="visually-hidden">Ссылка</span>
-                        <svg class="filters__icon" width="21" height="18">
-                            <use xlink:href="#icon-filter-link"></use>
-                        </svg>
-                    </a>
-                </li>
+                <?php
+                foreach ($types as $type): ?>
+                    <li class="popular__filters-item filters__item">
+                        <a class="filters__button filters__button--<?=$type['class_name']?> button" href="#">
+                            <span class="visually-hidden"><?=$type['class_name']?></span>
+                            <svg class="filters__icon" width="22" height="18">
+                                <use xlink:href="#icon-filter-<?=$type['class_name']?>"></use>
+                            </svg>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </div>
     </div>
     <div class="popular__posts">
-
         <?php foreach ($cards as $card): ?>
-            <article class="popular__post post <?= $card['type'] ?>">
+            <article class="popular__post post post-<?= $types[$card['type_id'] - 1]['class_name'] ?>">
                 <header class="post__header">
                     <h2><?= htmlspecialchars($card['title']) ?></h2>
                 </header>
 
                 <div class="post__main">
-                    <?php switch ($card['type']):
-                        case 'post-quote': ?>
+                    <?php switch ($types[$card['type_id'] - 1]['class_name']):
+                         case 'quote': ?>
                             <blockquote>
                                 <p>
                                     <?= htmlspecialchars($card['content']) ?>
@@ -103,11 +73,11 @@
                             </blockquote>
                             <?php break; ?>
 
-                        <?php case 'post-text': ?>
-                            <p><?= cropping_text(htmlspecialchars($card['content'])) ?></p>
+                        <?php case 'text': ?>
+                            <?= cropping_text(htmlspecialchars($card['content'])) ?>
                             <?php break; ?>
 
-                        <?php case 'post-link': ?>
+                        <?php case 'link': ?>
                             <div class="post-link__wrapper">
                                 <a class="post-link__external" href="http://<?= $card['content'] ?>"
                                    title="Перейти по ссылке">
@@ -125,20 +95,20 @@
                             </div>
                             <?php break; ?>
 
-                        <?php case 'post-photo': ?>
+                        <?php case 'photo': ?>
                             <div class="post-photo__image-wrapper">
                                 <img src="img/<?= $card['content'] ?>" alt="Фото от пользователя" width="360"
                                      height="240">
                             </div>
                             <?php break; ?>
 
-                        <?php case 'post-video': ?>
+                        <?php case 'video': ?>
                             <div class="post-video__block">
                                 <div class="post-video__preview">
-                                    <?= embed_youtube_cover(/* вставьте ссылку на видео */); ?>
+                                    <?= embed_youtube_cover($card['content']); ?>
                                     <img src="img/coast-medium.jpg" alt="Превью к видео" width="360" height="188">
                                 </div>
-                                <a href="post-details.html" class="post-video__play-big button">
+                                <a href="pages/post-details.html" class="post-video__play-big button">
                                     <svg class="post-video__play-big-icon" width="14" height="14">
                                         <use xlink:href="#icon-video-play-big"></use>
                                     </svg>
@@ -154,11 +124,11 @@
                         <a class="post__author-link" href="#" title="<?= $card['name'] ?>">
                             <div class="post__avatar-wrapper">
                                 <!--укажите путь к файлу аватара-->
-                                <img class="post__author-avatar" src="img/<?= $card['img'] ?>"
+                                <img class="post__author-avatar" src="img/<?= $card['file_id'] ?>"
                                      alt="Аватар пользователя">
                             </div>
                             <div class="post__info">
-                                <b class="post__author-name"><?= $card['user'] ?></b>
+                                <b class="post__author-name"><?= $card['name'] ?></b>
                                 <time class="post__time"
                                       datetime="<?= get_time_format(generate_random_date($card['id'])) ?>"
                                       title="<?= get_time_format(generate_random_date($card['id'])) ?>"
