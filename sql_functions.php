@@ -8,9 +8,9 @@ require_once 'config/connect.php';
  * @return array
  */
 
-function simpleRequest(string $sql): array
+function getDataDb(string $sql): array
 {
-    $con = mysqli_connect(HOST, USER, PASS,NAME);
+    $con = mysqli_connect(HOST, USER, PASS, NAME);
     mysqli_set_charset($con, "utf8");
 
     $result = mysqli_query($con, $sql);

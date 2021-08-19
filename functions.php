@@ -30,7 +30,7 @@ function cropping_text(string $text, int $long = 300): string
         return sprintf($format, $total_text);
     }
 
-    return '<p>' . $text . '</p>';
+    return sprintf('<p> %s </p>', $text);
 }
 
 /**

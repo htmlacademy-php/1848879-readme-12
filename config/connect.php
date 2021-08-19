@@ -8,9 +8,10 @@ const NAME = 'readme';
 $con = mysqli_connect(HOST, USER, PASS,NAME);
 mysqli_set_charset($con, "utf8");
 
-if ($con == false) {
-    print("Ошибка подключения: " . mysqli_connect_error());
+$message = sprintf('Ошибка подключения: %s', mysqli_connect_error());
+
+if ($con) {
+    $message = 'Соединение установлено';
 }
-else {
-    print("Соединение установлено");
-}
+
+print($message);
