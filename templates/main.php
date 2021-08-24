@@ -36,48 +36,59 @@
             <b class="popular__filters-caption filters__caption">Тип контента:</b>
             <ul class="popular__filters-list filters__list">
                 <li class="popular__filters-item popular__filters-item--all filters__item filters__item--all">
-                    <a class="filters__button filters__button--ellipse filters__button--all filters__button--active"
-                       href="#">
+                    <a href="/"
+                       class="filters__button filters__button--ellipse filters__button--all <?= ($sortingParameters === 'all') ?
+                           'filters__button--active' : ""; ?>">
                         <span>Все</span>
                     </a>
                 </li>
                 <?php
                 foreach ($types as $type): ?>
                     <li class="popular__filters-item filters__item">
-                        <a class="filters__button filters__button--<?=$type['class_name']?> button" href="#">
-                            <span class="visually-hidden"><?=$type['class_name']?></span>
+                        <a class="filters__button filters__button--<?= $type['class_name'] ?> <?= ($sortingParameters === $type['class_name']) ?
+                            'filters__button--active' : ""; ?> button" href="/index.php?type_post=<?= $type['id'] ?>">
+                            <span class="visually-hidden"><?= $type['class_name'] ?></span>
                             <svg class="filters__icon" width="22" height="18">
-                                <use xlink:href="#icon-filter-<?=$type['class_name']?>"></use>
+                                <use xlink:href="#icon-filter-<?= $type['class_name'] ?>"></use>
                             </svg>
                         </a>
                     </li>
-                <?php endforeach; ?>
+                <?php
+                endforeach; ?>
             </ul>
         </div>
     </div>
     <div class="popular__posts">
-        <?php foreach ($cards as $card): ?>
+        <?php
+        foreach ($cards as $card): ?>
             <article class="popular__post post post-<?= $types[$card['type_id'] - 1]['class_name'] ?>">
                 <header class="post__header">
-                    <h2><?= htmlspecialchars($card['title']) ?></h2>
+                    <a href="<?= '/post.php?post_id=' . $card['id'] ?>">
+                        <h2><?= htmlspecialchars($card['title']) ?></h2>
+                    </a>
                 </header>
 
                 <div class="post__main">
-                    <?php switch ($types[$card['type_id'] - 1]['class_name']):
-                         case 'quote': ?>
+                    <?php
+                    switch ($types[$card['type_id'] - 1]['class_name']):
+                        case 'quote': ?>
                             <blockquote>
                                 <p>
                                     <?= htmlspecialchars($card['content']) ?>
                                 </p>
                                 <cite>Неизвестный Автор</cite>
                             </blockquote>
-                            <?php break; ?>
+                            <?php
+                            break; ?>
 
-                        <?php case 'text': ?>
+                        <?php
+                        case 'text': ?>
                             <?= cropping_text(htmlspecialchars($card['content'])) ?>
-                            <?php break; ?>
+                            <?php
+                            break; ?>
 
-                        <?php case 'link': ?>
+                        <?php
+                        case 'link': ?>
                             <div class="post-link__wrapper">
                                 <a class="post-link__external" href="http://<?= $card['content'] ?>"
                                    title="Перейти по ссылке">
@@ -93,16 +104,20 @@
                                     <span><?= htmlspecialchars($card['content']) ?></span>
                                 </a>
                             </div>
-                            <?php break; ?>
+                            <?php
+                            break; ?>
 
-                        <?php case 'photo': ?>
+                        <?php
+                        case 'photo': ?>
                             <div class="post-photo__image-wrapper">
                                 <img src="img/<?= $card['content'] ?>" alt="Фото от пользователя" width="360"
                                      height="240">
                             </div>
-                            <?php break; ?>
+                            <?php
+                            break; ?>
 
-                        <?php case 'video': ?>
+                        <?php
+                        case 'video': ?>
                             <div class="post-video__block">
                                 <div class="post-video__preview">
                                     <?= embed_youtube_cover($card['content']); ?>
@@ -115,9 +130,11 @@
                                     <span class="visually-hidden">Запустить проигрыватель</span>
                                 </a>
                             </div>
-                            <?php break; ?>
+                            <?php
+                            break; ?>
 
-                        <?php endswitch ?>
+                        <?php
+                    endswitch ?>
                 </div>
                 <footer class="post__footer">
                     <div class="post__author">
@@ -163,5 +180,6 @@
                     </div>
                 </footer>
             </article>
-        <?php endforeach; ?>
+        <?php
+        endforeach; ?>
     </div>

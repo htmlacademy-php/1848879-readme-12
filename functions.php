@@ -116,3 +116,17 @@ function get_time_format(string $time): string
 
     return date("d.m.Y H:i", $time_post);
 }
+
+/**
+ * Функция принимает гет запрос и защищает принимаемые данные
+ * @param string $getString
+ * @return string
+ */
+
+function xssGetString(string $getString): string
+{
+    $getString = trim($getString);
+    $getString = stripslashes($getString);
+
+    return htmlspecialchars($getString);
+}
