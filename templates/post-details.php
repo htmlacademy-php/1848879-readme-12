@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="page__title page__title--publication"><?=$post[0]['title']?></h1>
+    <h1 class="page__title page__title--publication"><?=$post['title']?></h1>
     <section class="post-details">
         <h2 class="visually-hidden">Публикация</h2>
         <div class="post-details__wrapper post-photo">
@@ -45,7 +45,7 @@
                 <div class="comments">
                     <form class="comments__form form" action="#" method="post">
                         <div class="comments__my-avatar">
-                            <img class="comments__picture" src="img/userpic-medium.jpg" alt="Аватар пользователя">
+                            <img class="comments__picture" src="/img/userpic-medium.jpg" alt="Аватар пользователя">
                         </div>
                         <div class="form__input-section form__input-section--error">
                             <textarea class="comments__textarea form__textarea form__input" placeholder="Ваш комментарий"></textarea>
@@ -63,7 +63,7 @@
                             <li class="comments__item user">
                                 <div class="comments__avatar">
                                     <a class="user__avatar-link" href="#">
-                                        <img class="comments__picture" src="img/userpic-larisa.jpg" alt="Аватар пользователя">
+                                        <img class="comments__picture" src="/img/userpic-larisa.jpg" alt="Аватар пользователя">
                                     </a>
                                 </div>
                                 <div class="comments__info">
@@ -81,7 +81,7 @@
                             <li class="comments__item user">
                                 <div class="comments__avatar">
                                     <a class="user__avatar-link" href="#">
-                                        <img class="comments__picture" src="img/userpic-larisa.jpg" alt="Аватар пользователя">
+                                        <img class="comments__picture" src="/img/userpic-larisa.jpg" alt="Аватар пользователя">
                                     </a>
                                 </div>
                                 <div class="comments__info">
@@ -108,12 +108,12 @@
                 <div class="post-details__user-info user__info">
                     <div class="post-details__avatar user__avatar">
                         <a class="post-details__avatar-link user__avatar-link" href="#">
-                            <img class="post-details__picture user__picture" src="img/<?=$post[0]['file_id']?>" alt="Аватар пользователя">
+                            <img class="post-details__picture user__picture" src="/img/<?=$post['file_id']?>" alt="Аватар пользователя">
                         </a>
                     </div>
                     <div class="post-details__name-wrapper user__name-wrapper">
                         <a class="post-details__name user__name" href="#">
-                            <span><?=$post[0]['name']?></span>
+                            <span><?=$post['name']?></span>
                         </a>
                         <time class="post-details__time user__time" datetime="2014-03-20">5 лет на сайте</time>
                     </div>

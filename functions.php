@@ -130,3 +130,16 @@ function xssGetString(string $getString): string
 
     return htmlspecialchars($getString);
 }
+
+/**
+ * Функция возвращает ошибку 404
+ * @return string
+ */
+
+function getCode404(): string
+{
+    define("HTTP_NOT_FOUND", 404);
+
+    http_response_code(HTTP_NOT_FOUND);
+    die('Такой страницы не существует!');
+}

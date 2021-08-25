@@ -4,7 +4,7 @@ require_once 'config/connect.php';
 
 /**
  * Функция принимает sql запрос и отдает готовый массив из бд
- * @param string $sql sql запрос
+ * @param string $sql Sql запрос
  * @return array
  */
 
@@ -16,40 +16,21 @@ function getDataDb(string $sql): array
     $result = mysqli_query($con, $sql);
 
     if(!$result) {
-        http_response_code(404);
-        die('Такой страницы не существует!');
+        print(sprintf('Ошибка подключения: %s', mysqli_connect_error()));
     }
 
     return  mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
 /**
- * Функция принимает массив поста и отдает строку
- * @param string $post массив поста
+ * Функция принимает тип поста и отдает строку названия типа
+ * @param int $type_id Id типа
  * @return string
  */
 
-function getTypePost(string $post): string
+function getTypeID(int $type_id): string
 {
-    $type = '';
+    $postTypes = ['empty', 'photo', 'video', 'text' , 'quote', 'link'];
 
-    switch ($post) {
-        case '1':
-            $type = 'photo';
-            break;
-        case '2':
-            $type = 'video';
-            break;
-        case '3':
-            $type = 'text';
-            break;
-        case '4':
-            $type = 'quote';
-            break;
-        case '5':
-            $type = 'link';
-            break;
-    }
-
-    return $type;
+    return $postTypes[$type_id];
 }

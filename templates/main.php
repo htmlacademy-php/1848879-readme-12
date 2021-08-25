@@ -110,7 +110,7 @@
                         <?php
                         case 'photo': ?>
                             <div class="post-photo__image-wrapper">
-                                <img src="img/<?= $card['content'] ?>" alt="Фото от пользователя" width="360"
+                                <img src="/img/<?= $card['content'] ?>" alt="Фото от пользователя" width="360"
                                      height="240">
                             </div>
                             <?php
@@ -121,9 +121,9 @@
                             <div class="post-video__block">
                                 <div class="post-video__preview">
                                     <?= embed_youtube_cover($card['content']); ?>
-                                    <img src="img/coast-medium.jpg" alt="Превью к видео" width="360" height="188">
+                                    <img src="/img/coast-medium.jpg" alt="Превью к видео" width="360" height="188">
                                 </div>
-                                <a href="pages/post-details.html" class="post-video__play-big button">
+                                <a href="/pages/post-details.html" class="post-video__play-big button">
                                     <svg class="post-video__play-big-icon" width="14" height="14">
                                         <use xlink:href="#icon-video-play-big"></use>
                                     </svg>

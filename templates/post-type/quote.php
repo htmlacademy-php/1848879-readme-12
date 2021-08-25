@@ -4,7 +4,7 @@
   <div class="post__main">
     <blockquote>
       <p>
-        <?=htmlspecialchars($post[0]['content']);?>
+        <?=htmlspecialchars($post['content']);?>
       </p>
       <cite>Неизвестный Автор</cite>
     </blockquote>
