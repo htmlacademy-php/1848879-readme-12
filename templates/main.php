@@ -70,7 +70,7 @@
 
                 <div class="post__main">
                     <?php
-                    switch ($types[$card['type_id'] - 1]['class_name']):
+                    switch (getTypeID($card['type_id'])):
                         case 'quote': ?>
                             <blockquote>
                                 <p>
