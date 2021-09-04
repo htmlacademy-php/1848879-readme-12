@@ -126,7 +126,7 @@
                 <nav class="header__nav">
                     <ul class="header__my-nav">
                         <li class="header__my-page header__my-page--popular">
-                            <a class="header__page-link header__page-link--active" title="Популярный контент">
+                            <a href="/" class="header__page-link header__page-link--active" title="Популярный контент">
                                 <span class="visually-hidden">Популярный контент</span>
                             </a>
                         </li>
@@ -190,7 +190,7 @@
                             </div>
                         </li>
                         <li>
-                            <a class="header__post-button button button--transparent" href="/pages/adding-post.html">Пост</a>
+                            <a class="header__post-button button button--transparent" href="/add.php?adding-type_id=1">Пост</a>
                         </li>
                     </ul>
                 </nav>
@@ -241,7 +241,7 @@
                         <a class="footer__page-link" href="/pages/feed.html">Моя лента</a>
                     </li>
                     <li class="footer__my-page footer__my-page--popular">
-                        <a class="footer__page-link" href="/pages/popular.html">Популярный контент</a>
+                        <a class="footer__page-link" href="/">Популярный контент</a>
                     </li>
                     <li class="footer__my-page footer__my-page--messages">
                         <a class="footer__page-link" href="/pages/messages.html">Личные сообщения</a>
@@ -260,7 +260,7 @@
     </div>
 </footer>
 <script src="/libs/dropzone.js"></script>
-<script src="/js/dropzone-settings.js"></script>
-<script src="/js/main.js"></script>
+<!--<script src="/js/dropzone-settings.js"></script>-->
+<!--<script src="/js/main.js"></script>-->
 </body>
 </html>

@@ -143,3 +143,39 @@ function getCode404(): string
     http_response_code(HTTP_NOT_FOUND);
     die('Такой страницы не существует!');
 }
+
+/**
+ * Принимает имя input и отдает название имя поля, где ошибка
+ * @param string $name имя поля где ошибка
+ * @return string
+ */
+function checkNameError(string $name): string
+{
+    $names = '';
+
+    switch ($name) {
+        case 'heading':
+            $names = 'Заголовок.';
+            break;
+        case 'content':
+            $names = 'Текст поста.';
+            break;
+        case 'quote-content':
+            $names = 'Цитата.';
+            break;
+        case 'photo-url':
+            $names = 'Ссылка из интернета.';
+            break;
+        case 'link':
+            $names = 'Ссылка.';
+            break;
+        case 'quote-author':
+            $names = 'Автор.';
+            break;
+        case 'tags':
+            $names = 'Теги.';
+            break;
+    }
+
+    return $names;
+}

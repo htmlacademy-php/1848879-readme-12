@@ -8,11 +8,7 @@ if (!is_numeric($_GET['post_id']) || empty($_GET['post_id'])) {
     getCode404();
 }
 
-$post = getDataDb(sprintf('SELECT * FROM posts WHERE id = %s', xssGetString($_GET['post_id'])));
-
-if (!$post) {
-    getCode404();
-}
+$post = takesGetDataDb(sprintf('SELECT * FROM posts WHERE id = %s', xssGetString($_GET['post_id'])));
 
 // проверяет есть ли такой тип постов и выводит строку названия
 $type_post = getTypeID(reset($post)['type_id']);
