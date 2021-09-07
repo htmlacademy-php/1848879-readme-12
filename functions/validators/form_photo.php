@@ -7,16 +7,19 @@
  *
  * @return string|null Ошибку если валидация не прошла
  */
-function upload_post_picture(array $files): ?string
+function upload_post_picture(array $files, $folder = '/uploads/'): ?string
 {
     if (($files['picture']['size'] >= 104857600)) {
         return 'прикрепленный файл слишком большой';
     }
-
+    $file_name = $files['picture']['name'];
+    $file_path = __DIR__.$folder;
     $valid_mime_types = ['image/png', 'image/jpeg', 'image/gif'];
     if (!in_array(mime_content_type($files['picture']['tmp_name']), $valid_mime_types)) {
         return 'Не подходящий формат прикрепленного изображения. Используйте jpg, png или gif.';
     }
+
+    move_uploaded_file($files['picture']['tmp_name'], $file_path.$file_name);
 
     return null;
 }

@@ -20,3 +20,8 @@ require_once('functions/sql_functions.php');
  * Проверка формы
  */
 require_once('functions/filters_form.php');
+
+/**
+ * Добавление формы
+ */
+require_once('functions/add_post.php');

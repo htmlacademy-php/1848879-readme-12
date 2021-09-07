@@ -1,6 +1,6 @@
 <?php
 
-require_once 'validators/form_photo.php';
+require_once 'functions/validators/form_photo.php';
 require_once 'validators/form_video.php';
 require_once 'validators/form_link.php';
 require_once 'validators/form_general.php';

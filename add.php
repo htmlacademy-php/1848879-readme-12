@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors[] = array_merge($validateGeneral, $validate);
 
             if(empty(reset($errors))) {
-                print_r('okey');
+                var_dump(addPhoto($_POST));
             }
             break;
         case CONTENT_VIDEO:

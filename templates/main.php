@@ -110,7 +110,7 @@
                         <?php
                         case 'photo': ?>
                             <div class="post-photo__image-wrapper">
-                                <img src="/img/<?= $card['content'] ?>" alt="Фото от пользователя" width="360"
+                                <img src="/uploads/<?= $card['content'] ?>" alt="Фото от пользователя" width="360"
                                      height="240">
                             </div>
                             <?php

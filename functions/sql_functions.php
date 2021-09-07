@@ -71,5 +71,5 @@ function getSafePost(string $inquiry): string
 {
     $con = mysqli_connect(HOST, USER, PASS, NAME);
 
-    return mysqli_real_escape_string($con, $inquiry);
+    return mysqli_real_escape_string($con, trim($inquiry));
 }
