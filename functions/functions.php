@@ -8,7 +8,6 @@
  * @param int $long допустимое кол-во символов, по умолчанию 300
  * @return string
  */
-
 function cropping_text(string $text, int $long = 300): string
 {
 
@@ -39,7 +38,6 @@ function cropping_text(string $text, int $long = 300): string
  * @param string $time
  * @return string
  */
-
 function time_has_passed(string $time): string
 {
     date_default_timezone_set('Europe/Moscow');
@@ -109,7 +107,6 @@ function time_has_passed(string $time): string
  * @param string $time
  * @return string
  */
-
 function get_time_format(string $time): string
 {
     $time_post = strtotime($time);
@@ -122,7 +119,6 @@ function get_time_format(string $time): string
  * @param string $getString
  * @return string
  */
-
 function xssGetString(string $getString): string
 {
     $getString = trim($getString);
@@ -135,7 +131,6 @@ function xssGetString(string $getString): string
  * Функция возвращает ошибку 404
  * @return string
  */
-
 function getCode404(): string
 {
     define("HTTP_NOT_FOUND", 404);

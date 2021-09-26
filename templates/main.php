@@ -76,7 +76,7 @@
                                 <p>
                                     <?= htmlspecialchars($card['content']) ?>
                                 </p>
-                                <cite>Неизвестный Автор</cite>
+                                <cite><?= htmlspecialchars($card['author_quote']) ?></cite>
                             </blockquote>
                             <?php
                             break; ?>
@@ -110,7 +110,7 @@
                         <?php
                         case 'photo': ?>
                             <div class="post-photo__image-wrapper">
-                                <img src="/uploads/<?= $card['content'] ?>" alt="Фото от пользователя" width="360"
+                                <img src="<?= $card['content'] ?>" alt="Фото от пользователя" width="360"
                                      height="240">
                             </div>
                             <?php
@@ -121,9 +121,8 @@
                             <div class="post-video__block">
                                 <div class="post-video__preview">
                                     <?= embed_youtube_cover($card['content']); ?>
-                                    <img src="/img/coast-medium.jpg" alt="Превью к видео" width="360" height="188">
                                 </div>
-                                <a href="/pages/post-details.html" class="post-video__play-big button">
+                                <a href="<?= $card['content'] ?>" class="post-video__play-big button">
                                     <svg class="post-video__play-big-icon" width="14" height="14">
                                         <use xlink:href="#icon-video-play-big"></use>
                                     </svg>
@@ -140,12 +139,11 @@
                     <div class="post__author">
                         <a class="post__author-link" href="#" title="<?= $card['name'] ?>">
                             <div class="post__avatar-wrapper">
-                                <!--укажите путь к файлу аватара-->
-                                <img class="post__author-avatar" src="img/<?= $card['file_id'] ?>"
+                                <img class="post__author-avatar" src="img/<?= $users[$card['user_id'] - 1]['avatar_url'] ?>"
                                      alt="Аватар пользователя">
                             </div>
                             <div class="post__info">
-                                <b class="post__author-name"><?= $card['name'] ?></b>
+                                <b class="post__author-name"><?= $users[$card['user_id'] - 1]['name'] ?></b>
                                 <time class="post__time"
                                       datetime="<?= get_time_format(generate_random_date($card['id'])) ?>"
                                       title="<?= get_time_format(generate_random_date($card['id'])) ?>"

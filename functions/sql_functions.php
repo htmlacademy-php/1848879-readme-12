@@ -7,7 +7,6 @@ require_once 'config/connect.php';
  * @param string $sql Sql запрос
  * @return array
  */
-
 function getDataDb(string $sql): array
 {
     $con = mysqli_connect(HOST, USER, PASS, NAME);
@@ -27,7 +26,6 @@ function getDataDb(string $sql): array
  * @param string $sql Sql запрос
  * @return array
  */
-
 function takesGetDataDb(string $sql): array
 {
     $con = mysqli_connect(HOST, USER, PASS, NAME);
@@ -53,7 +51,6 @@ function takesGetDataDb(string $sql): array
  * @param int $type_id Id типа
  * @return string
  */
-
 function getTypeID(int $type_id): string
 {
     $postTypes = ['empty', 'photo', 'video', 'text' , 'quote', 'link'];
@@ -66,7 +63,6 @@ function getTypeID(int $type_id): string
  * @param string $inquiry Пост запрос
  * @return string
  */
-
 function getSafePost(string $inquiry): string
 {
     $con = mysqli_connect(HOST, USER, PASS, NAME);

@@ -34,14 +34,25 @@ function checkTags(string $tags): string
 {
     $safePost = getSafePost(trim($_POST[$tags]));
 
-    $tags_array = explode(" ", $safePost);
-    if (preg_match('/[^a-zа-я ]+/msiu', $safePost)) {
-        return 'Это поле должно состоять только из букв.';
-    }
-    foreach ($tags_array as $tag) {
-        if (mb_strlen($tag) > 20) {
-            return "Используется слишком длинный тег: {$safePost}.
-            Подберите синоним или убедитесь что тег состоит из одного слова";
+    if (!empty($safePost)) {
+        $len = strlen($safePost);
+
+        if ($len < 2 or $len > 250) {
+            return "Значение должно быть от 2 до 250 символов";
+        }
+
+        $hashtags = explode(' ', $safePost);
+
+        foreach ($hashtags as $hashtag) {
+            if (substr($hashtag, 0, 1) !== '#') {
+                return 'Хэштег должен начинаться со знака решетки';
+            }
+            if (strrpos($hashtag, '#') > 0) {
+                return 'Хэш-теги разделяются пробелами';
+            }
+            if (strlen($hashtag) < 2) {
+                return 'Хэш-тег не может состоять только из знака решетки';
+            }
         }
     }
     return false;

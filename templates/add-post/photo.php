@@ -80,7 +80,7 @@
         <div class="adding-post__textarea-wrapper form__input-wrapper" style="display:none">
             <label class="adding-post__label form__label" for="form-type">ТИП ПОСТА <span class="form__input-required">*</span></label>
             <div class="form__input-section">
-                <input class="adding-post__input form__input" id="form-type" type="text" name="form-type" value="photo">
+                <input class="adding-post__input form__input" id="form-type" type="text" name="form-type" value="1">
             </div>
         </div>
         <div class="adding-post__buttons">

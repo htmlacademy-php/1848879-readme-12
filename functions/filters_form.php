@@ -108,7 +108,7 @@ function checkTypeQuote(string $content, string $author): array
 {
     $errors = [];
 
-    $contentLength = isCorrectFullness($content, 10, 70);
+    $contentLength = isCorrectFullness($content, 10, 1000);
     if ($contentLength) {
         $errors[$content] = $contentLength;
     }

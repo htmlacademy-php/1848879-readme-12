@@ -2,11 +2,37 @@
 
 require_once('settings.php');
 
-const CONTENT_PHOTO = 'photo';
-const CONTENT_VIDEO = 'video';
-const CONTENT_TEXT = 'text';
-const CONTENT_QUOTE = 'quote';
-const CONTENT_LINK = 'link';
+const CONTENT_PHOTO = 1;
+const CONTENT_VIDEO = 2;
+const CONTENT_TEXT = 3;
+const CONTENT_QUOTE = 4;
+const CONTENT_LINK = 5;
+
+/**
+ * Функция сохранения загруженного изображения, если оно есть или
+ * сохранения изображения по ссылке
+ * @param $fileName
+ * @param $fileUrl
+ * @return false|string
+ */
+function uploadImage($fileName, $fileUrl)
+{
+    if (!empty($fileName['picture']) && $fileName['picture']['error'] !== 4) {
+        $file_name = $fileName['picture']['name'];
+        $file_path = __DIR__ . '/uploads/img_posts/';
+
+        move_uploaded_file($fileName['picture']['tmp_name'], $file_path . $file_name);
+
+        return '/uploads/img_posts/' . $file_name;
+    }
+
+    $image_content = file_get_contents($_POST[$fileUrl]);
+    $file_name = basename($_POST[$fileUrl]);
+    $file_path = __DIR__ . '/uploads/img_posts/';
+    file_put_contents($file_path . $file_name, $image_content);
+
+    return '/uploads/img_posts/' . $file_name;
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors = [];
@@ -19,15 +45,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors[] = array_merge($validateGeneral, $validate);
 
             if(empty(reset($errors))) {
-                var_dump(addPhoto($_POST));
+                $fileUrl = uploadImage($_FILES, 'photo-url');
+                $postId = addPost($_POST, $fileUrl);
+
+                if(!empty($_POST['tags'])) {
+                    addHashtag(hashtagArray($_POST['tags']), $postId);
+                }
+
+                $URL = '/post.php?post_id=' . $postId;
+                header("Location: $URL");
             }
             break;
         case CONTENT_VIDEO:
-            $validate = checkTypeVideo('link');
+            $validate = checkTypeVideo('content');
             $errors[] = array_merge($validateGeneral, $validate);
 
             if(empty(reset($errors))) {
-                print_r('okey');
+                $postId = addPost($_POST);
+
+                if(!empty($_POST['tags'])) {
+                    addHashtag(hashtagArray($_POST['tags']), $postId);
+                }
+
+                $URL = '/post.php?post_id=' . $postId;
+                header("Location: $URL");
             }
             break;
         case CONTENT_TEXT:
@@ -35,23 +76,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors[] = array_merge($validateGeneral, $validate);
 
             if(empty(reset($errors))) {
-                print_r('okey');
+                $postId = addPost($_POST);
+
+                if(!empty($_POST['tags'])) {
+                    addHashtag(hashtagArray($_POST['tags']), $postId);
+                }
+
+                $URL = '/post.php?post_id=' . $postId;
+                header("Location: $URL");
             }
             break;
         case CONTENT_QUOTE:
-            $validate = checkTypeQuote('quote-content', 'quote-author');
+            $validate = checkTypeQuote('content', 'quote-author');
             $errors[] = array_merge($validateGeneral, $validate);
 
             if(empty(reset($errors))) {
-                print_r('okey');
+                $postId = addPost($_POST);
+
+                if(!empty($_POST['tags'])) {
+                    addHashtag(hashtagArray($_POST['tags']), $postId);
+                }
+
+                $URL = '/post.php?post_id=' . $postId;
+                header("Location: $URL");
             }
             break;
         case CONTENT_LINK:
-            $validate = checkTypeLink('link');
+            $validate = checkTypeLink('content');
             $errors[] = array_merge($validateGeneral, $validate);
 
             if(empty(reset($errors))) {
-                print_r('okey');
+                $postId = addPost($_POST);
+
+                if(!empty($_POST['tags'])) {
+                    addHashtag(hashtagArray($_POST['tags']), $postId);
+                }
+
+                $URL = '/post.php?post_id=' . $postId;
+                header("Location: $URL");
             }
             break;
     }

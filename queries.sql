@@ -8,11 +8,11 @@ INSERT INTO users (email, name,  password, avatar_url) VALUES ('larisa@example.c
 INSERT INTO users (email, name,  password, avatar_url) VALUES ('vladik@example.com', 'Владик', 'qwerty123', 'userpic.jpg');
 INSERT INTO users (email, name,  password, avatar_url) VALUES ('виктор@пример.рф', 'Виктор', 'qwer1', 'userpic-mark.jpg');
 
-INSERT INTO posts (user_id, title, type_id, content, name, file_id, date, views_amount) VALUES (1, 'Цитата', 4, 'Мы в жизни любим только раз, а после ищем лишь похожих', 'Лариса', 'userpic-larisa-small.jpg', '2021-07-22 16:00', 25);
-INSERT INTO posts (user_id, title, type_id, content, name, file_id, date, views_amount) VALUES (2, 'Игра престолов', 3, 'Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!', 'Владик', 'userpic.jpg', '2021-07-22 15:25', 20);
-INSERT INTO posts (user_id, title, type_id, content, name, file_id, date, views_amount) VALUES (3, 'Наконец, обработал фотки!', 1, 'rock-medium.jpg', 'Виктор', 'userpic-mark.jpg', '2021-07-15 13:05', 15);
-INSERT INTO posts (user_id, title, type_id, content, name, file_id, date, views_amount) VALUES (1, 'Моя мечта', 1, 'coast-medium.jpg', 'Лариса', 'userpic-larisa-small.jpg', '2021-06-15 13:05', 10);
-INSERT INTO posts (user_id, title, type_id, content, name, file_id, date, views_amount) VALUES (2, 'Лучшие курсы', 5, 'www.htmlacademy.ru', 'Владик', 'userpic.jpg', '2021-07-15 13:05', 40);
+INSERT INTO posts (user_id, title, type_id, content, author_quote, date, views_amount) VALUES (1, 'Цитата', 4, 'Мы в жизни любим только раз, а после ищем лишь похожих', 'Пушкин', '2021-07-22 16:00', 25);
+INSERT INTO posts (user_id, title, type_id, content, date, views_amount) VALUES (2, 'Игра престолов', 3, 'Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!', '2021-07-22 15:25', 20);
+INSERT INTO posts (user_id, title, type_id, content, date, views_amount) VALUES (3, 'Наконец, обработал фотки!', 1, '/uploads/img_posts/rock-medium.jpg', '2021-07-15 13:05', 15);
+INSERT INTO posts (user_id, title, type_id, content, date, views_amount) VALUES (1, 'Моя мечта', 1, '/uploads/img_posts/coast-medium.jpg', '2021-06-15 13:05', 10);
+INSERT INTO posts (user_id, title, type_id, content, date, views_amount) VALUES (2, 'Лучшие курсы', 5, 'www.htmlacademy.ru', '2021-07-15 13:05', 40);
 
 INSERT INTO comments (text_content, author_id, post_id) VALUES ('Вау!!!', 1, 2);
 INSERT INTO comments (text_content, author_id, post_id) VALUES ('Ого', 3, 1);
