@@ -12,12 +12,12 @@
                     </label>
                     <div class="form__input-section <?=(!empty($errors['heading'])) ? "form__input-section--error" : ""?>">
                         <input class="adding-post__input form__input" id="photo-heading" type="text"
-                               name="heading" placeholder="Введите заголовок">
+                               name="heading" placeholder="Введите заголовок" value="<?=htmlspecialchars($_POST['heading']) ?? ''?>">
                         <button class="form__error-button button" type="button">!<span class="visually-hidden">Информация об ошибке</span>
                         </button>
                         <div class="form__error-text">
-                            <h3 class="form__error-title">Заголовок сообщения</h3>
-                            <p class="form__error-desc">Текст сообщения об ошибке, подробно объясняющий, что не так.</p>
+                            <h3 class="form__error-title">Информация об ошибке</h3>
+                            <p class="form__error-desc"><?=$errors['heading']?></p>
                         </div>
                     </div>
                 </div>
@@ -25,12 +25,12 @@
                     <label class="adding-post__label form__label" for="photo-url">Ссылка из интернета</label>
                     <div class="form__input-section <?=(!empty($errors['photo-url'])) ? "form__input-section--error" : ""?>">
                         <input class="adding-post__input form__input" id="photo-url" type="text" name="photo-url"
-                               placeholder="Введите ссылку">
+                               placeholder="Введите ссылку" value="<?=htmlspecialchars($_POST['photo-url']) ?? ''?>">
                         <button class="form__error-button button" type="button">!<span class="visually-hidden">Информация об ошибке</span>
                         </button>
                         <div class="form__error-text">
-                            <h3 class="form__error-title">Заголовок сообщения</h3>
-                            <p class="form__error-desc">Текст сообщения об ошибке, подробно объясняющий, что не так.</p>
+                            <h3 class="form__error-title">Информация об ошибке</h3>
+                            <p class="form__error-desc"><?=$errors['photo-url']?></p>
                         </div>
                     </div>
                 </div>
@@ -38,12 +38,12 @@
                     <label class="adding-post__label form__label" for="photo-tags">Теги</label>
                     <div class="form__input-section <?=(!empty($errors['tags'])) ? "form__input-section--error" : ""?>">
                         <input class="adding-post__input form__input" id="photo-tags" type="text" name="tags"
-                               placeholder="Введите теги">
+                               placeholder="Введите теги" value="<?=htmlspecialchars($_POST['tags']) ?? ''?>">
                         <button class="form__error-button button" type="button">!<span class="visually-hidden">Информация об ошибке</span>
                         </button>
                         <div class="form__error-text">
-                            <h3 class="form__error-title">Заголовок сообщения</h3>
-                            <p class="form__error-desc">Текст сообщения об ошибке, подробно объясняющий, что не так.</p>
+                            <h3 class="form__error-title">Информация об ошибке</h3>
+                            <p class="form__error-desc"><?=$errors['tags']?></p>
                         </div>
                     </div>
                 </div>

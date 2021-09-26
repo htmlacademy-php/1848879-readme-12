@@ -6,34 +6,34 @@
                 <div class="adding-post__input-wrapper form__input-wrapper">
                     <label class="adding-post__label form__label" for="text-heading">Заголовок <span class="form__input-required">*</span></label>
                     <div class="form__input-section <?=(!empty($errors['heading'])) ? "form__input-section--error" : ""?>">
-                        <input class="adding-post__input form__input" id="text-heading" type="text" name="heading" placeholder="Введите заголовок">
+                        <input class="adding-post__input form__input" id="text-heading" type="text" name="heading" placeholder="Введите заголовок" value="<?=htmlspecialchars($_POST['heading']) ?? ''?>">
                         <button class="form__error-button button" type="button">!<span
                                 class="visually-hidden">Информация об ошибке</span></button>
                         <div class="form__error-text">
-                            <h3 class="form__error-title">Обнаружена ошибка</h3>
-                            <p class="form__error-desc">заполните</p>
+                            <h3 class="form__error-title">Информация об ошибке</h3>
+                            <p class="form__error-desc"><?=$errors['heading']?></p>
                         </div>
                     </div>
                 </div>
                 <div class="adding-post__textarea-wrapper form__textarea-wrapper">
                     <label class="adding-post__label form__label" for="post-text">Текст поста <span class="form__input-required">*</span></label>
                     <div class="form__input-section <?=(!empty($errors['content'])) ? "form__input-section--error" : ""?>">
-                        <textarea class="adding-post__textarea form__textarea form__input" id="post-text" name="content" placeholder="Введите текст публикации"></textarea>
+                        <textarea class="adding-post__textarea form__textarea form__input" id="post-text" name="content" placeholder="Введите текст публикации"><?=($_POST['content']) ? htmlspecialchars($_POST['content']) : ""?></textarea>
                         <button class="form__error-button button" type="button">!<span class="visually-hidden">Информация об ошибке</span></button>
                         <div class="form__error-text">
-                            <h3 class="form__error-title">Заголовок сообщения</h3>
-                            <p class="form__error-desc">Текст сообщения об ошибке, подробно объясняющий, что не так.</p>
+                            <h3 class="form__error-title">Информация об ошибке</h3>
+                            <p class="form__error-desc"><?=$errors['content']?></p>
                         </div>
                     </div>
                 </div>
                 <div class="adding-post__input-wrapper form__input-wrapper">
                     <label class="adding-post__label form__label" for="post-tags">Теги</label>
                     <div class="form__input-section <?=(!empty($errors['tags'])) ? "form__input-section--error" : ""?>">
-                        <input class="adding-post__input form__input" id="post-tags" type="text" name="tags" placeholder="Введите теги">
+                        <input class="adding-post__input form__input" id="post-tags" type="text" name="tags" placeholder="Введите теги" value="<?=htmlspecialchars($_POST['tags']) ?? ''?>">
                         <button class="form__error-button button" type="button">!<span class="visually-hidden">Информация об ошибке</span></button>
                         <div class="form__error-text">
-                            <h3 class="form__error-title">Заголовок сообщения</h3>
-                            <p class="form__error-desc">Текст сообщения об ошибке, подробно объясняющий, что не так.</p>
+                            <h3 class="form__error-title">Информация об ошибке</h3>
+                            <p class="form__error-desc"><?=$errors['tags']?></p>
                         </div>
                     </div>
                 </div>
