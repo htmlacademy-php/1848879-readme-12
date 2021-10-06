@@ -154,7 +154,7 @@ function include_template($name, array $data = [])
  *
  * @return string Ошибку если валидация не прошла
  */
-function check_youtube_url($url)
+function check_youtube_url(string $url): string
 {
     $id = extract_youtube_id($url);
 
@@ -172,7 +172,7 @@ function check_youtube_url($url)
         return "Видео по такой ссылке не найдено. Проверьте ссылку на видео";
     }
 
-    return true;
+    return '';
 }
 
 /**

@@ -7,6 +7,8 @@ $sortingParameters = 'all';
 
 $types = getDataDb('SELECT * FROM type_posts');
 
+$users = getDataDb('SELECT * FROM users');
+
 // Вывод постов по популярности
 $cards = getDataDb(
     'SELECT p.*, u.name, ct.class_name
@@ -39,6 +41,7 @@ if (!empty($_GET['type_post'])) {
 $page_content = include_template('main.php', [
     'cards' => $cards,
     'types' => $types,
+    'users' => $users,
     'sortingParameters' => $sortingParameters,
 ]);
 

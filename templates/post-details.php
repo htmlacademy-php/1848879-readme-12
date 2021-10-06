@@ -32,15 +32,12 @@
                             <span class="visually-hidden">количество репостов</span>
                         </a>
                     </div>
-                    <span class="post__view">500 просмотров</span>
+                    <span class="post__view"><?=$post['views_amount'] ?> просмотров</span>
                 </div>
                 <ul class="post__tags">
-                    <li><a href="#">#nature</a></li>
-                    <li><a href="#">#globe</a></li>
-                    <li><a href="#">#photooftheday</a></li>
-                    <li><a href="#">#canon</a></li>
-                    <li><a href="#">#landscape</a></li>
-                    <li><a href="#">#щикарныйвид</a></li>
+                    <?php foreach ($tags as $tag):?>
+                        <li><a href="#"><?=$tag['title']?></a></li>
+                    <?php endforeach;?>
                 </ul>
                 <div class="comments">
                     <form class="comments__form form" action="#" method="post">
@@ -108,12 +105,12 @@
                 <div class="post-details__user-info user__info">
                     <div class="post-details__avatar user__avatar">
                         <a class="post-details__avatar-link user__avatar-link" href="#">
-                            <img class="post-details__picture user__picture" src="/img/<?=$post['file_id']?>" alt="Аватар пользователя">
+                            <img class="post-details__picture user__picture" src="/img/<?=$users[$post['user_id'] - 1]['avatar_url']?>" alt="Аватар пользователя">
                         </a>
                     </div>
                     <div class="post-details__name-wrapper user__name-wrapper">
                         <a class="post-details__name user__name" href="#">
-                            <span><?=$post['name']?></span>
+                            <span><?=$users[$post['user_id'] - 1]['name']?></span>
                         </a>
                         <time class="post-details__time user__time" datetime="2014-03-20">5 лет на сайте</time>
                     </div>
