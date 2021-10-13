@@ -5,13 +5,13 @@
  * @param array $dataPost метод POST
  * @param $fileUrl, если есть картинка
  */
-function addUsers(array $dataPost, $fileUrl = null)
+function addUser(array $dataPost, $fileUrl = null)
 {
     $con = mysqli_connect(HOST, USER, PASS, NAME);
 
     $email = getSafePost($dataPost['email']);
     $login = getSafePost($dataPost['login']);
-    $pass = md5(getSafePost($dataPost['password']));
+    $pass = password_hash(getSafePost($dataPost['password']), PASSWORD_BCRYPT);
     $img = '/uploads/avatar_user/userpic.jpg';
 
     if(!empty($_FILES['picture']['name'])){
@@ -20,7 +20,7 @@ function addUsers(array $dataPost, $fileUrl = null)
         }
     }
 
-    $sql = "INSERT INTO `users` (email, name, password, avatar_url) VALUES ( '{$email}', '{$login}', '{$pass}', '{$img}')";
+    $sql = "INSERT INTO `users` (email, name, password, avatar_url) VALUES ( '$email', '$login', '$pass', '$img')";
 
     if (mysqli_query($con, $sql)) {
         header("Location: /");

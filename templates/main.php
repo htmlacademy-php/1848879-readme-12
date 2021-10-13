@@ -90,7 +90,7 @@
                         <?php
                         case 'link': ?>
                             <div class="post-link__wrapper">
-                                <a class="post-link__external" href="http://<?= $card['content'] ?>"
+                                <a class="post-link__external" href="https://<?= $card['content'] ?>"
                                    title="Перейти по ссылке">
                                     <div class="post-link__info-wrapper">
                                         <div class="post-link__icon-wrapper">

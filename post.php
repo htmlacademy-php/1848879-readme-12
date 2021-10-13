@@ -4,9 +4,9 @@ require_once('settings.php');
 
 // проверяет на заполненность запроса и что запрос числовой
 
-//if (!is_numeric($_GET['post_id']) || empty($_GET['post_id'])) {
-//    getCode404();
-//}
+if (!is_numeric($_GET['post_id']) || empty($_GET['post_id'])) {
+    getCode404();
+}
 
 $tags = getDataDb(sprintf('SELECT * FROM hashtags WHERE post_id = %s', xssGetString($_GET['post_id'])));
 

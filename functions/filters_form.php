@@ -83,7 +83,7 @@ function checkTypeVideo(string $content): array
 
 /**
  * Проверка текста на ошибки
- * @param string $content текст поста
+ * @param string $content Текст поста
  * @return array Ошибки если валидация не прошла
  */
 function checkTypeText(string $content): array

@@ -2,14 +2,16 @@
 
 require_once('settings.php');
 
+$errors = [];
+
 /**
  * Функция сохранения загруженного изображения, если оно есть или
  * сохранения изображения по ссылке
  * @param $fileName
  * @param $fileUrl
- * @return false|string
+ * @return string
  */
-function uploadImage($fileName, $fileUrl)
+function uploadImage($fileName, $fileUrl): string
 {
     if (!empty($fileName['picture']) && $fileName['picture']['error'] !== 4) {
         $file_name = $fileName['picture']['name'];
@@ -29,7 +31,6 @@ function uploadImage($fileName, $fileUrl)
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $errors = [];
     $fileUrl = null;
     $validate = checkRegister($_POST);
 
@@ -40,7 +41,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $fileUrl = uploadImage($_FILES, 'picture');
         }
 
-        $postId = addUsers($_POST, $fileUrl);
+        $postId = addUser($_POST, $fileUrl);
     }
 }
 

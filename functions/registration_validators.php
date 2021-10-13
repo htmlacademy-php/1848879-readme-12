@@ -32,7 +32,7 @@ function checkEmail(string $email)
 /**
  * Проверяет пароль
  * @param string $pass пароль
- * @param string $passRepeat повторный пароль
+ * @param string $passRepeat Повторный пароль
  * @return string
  */
 

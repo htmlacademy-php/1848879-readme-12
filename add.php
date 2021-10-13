@@ -8,14 +8,16 @@ const CONTENT_TEXT = 3;
 const CONTENT_QUOTE = 4;
 const CONTENT_LINK = 5;
 
+$errors = [];
+
 /**
  * Функция сохранения загруженного изображения, если оно есть или
  * сохранения изображения по ссылке
  * @param $fileName
  * @param $fileUrl
- * @return false|string
+ * @return string
  */
-function uploadImage($fileName, $fileUrl)
+function uploadImage($fileName, $fileUrl): string
 {
     if (!empty($fileName['picture']) && $fileName['picture']['error'] !== 4) {
         $file_name = $fileName['picture']['name'];
@@ -35,7 +37,6 @@ function uploadImage($fileName, $fileUrl)
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $errors = [];
 
     $validateGeneral = checkTypeGeneral('heading', 'tags');
 

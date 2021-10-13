@@ -25,8 +25,8 @@ function isCorrectFullness(string $name, int $min = 3, int $max = 40): ?string
 }
 
 /**
- * Функция проверяет поле тэги на соответсвтие тз
- * @param string $tags строчка тегов
+ * Функция проверяет поле теги на соответствие тз
+ * @param string $tags Строчка тегов
  *
  * @return string Ошибку если валидация не прошла
  */
