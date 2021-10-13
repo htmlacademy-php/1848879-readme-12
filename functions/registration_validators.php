@@ -2,7 +2,12 @@
 
 require_once 'validators/form_general.php';
 
-function checkEmail($email)
+/**
+ * Проверяет email
+ * @param string $email емаил
+ * @return string
+ */
+function checkEmail(string $email)
 {
     $conn = mysqli_connect(HOST, USER, PASS, NAME);
 
@@ -24,7 +29,14 @@ function checkEmail($email)
     return false;
 }
 
-function checkPass($pass, $passRepeat)
+/**
+ * Проверяет пароль
+ * @param string $pass пароль
+ * @param string $passRepeat повторный пароль
+ * @return string
+ */
+
+function checkPass(string $pass, string $passRepeat)
 {
     if (trim($pass) != trim($passRepeat)) {
         return "Повторный пароль введен не верно!";
@@ -32,7 +44,12 @@ function checkPass($pass, $passRepeat)
     return false;
 }
 
-function checkRegister($fields)
+/**
+ * Проверяет валидность полей
+ * @param array $fields Post
+ * @return array
+ */
+function checkRegister(array $fields): array
 {
     $errors = [];
 
