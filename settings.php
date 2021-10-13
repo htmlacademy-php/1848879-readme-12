@@ -25,3 +25,13 @@ require_once('functions/filters_form.php');
  * Добавление формы
  */
 require_once('functions/add_post.php');
+
+/**
+ * Проверка Регистрации
+ */
+require_once('functions/registration_validators.php');
+
+/**
+ * Добавление пользователя
+ */
+require_once('functions/addUser.php');
