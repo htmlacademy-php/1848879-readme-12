@@ -21,11 +21,11 @@ function uploadImage($fileName, $fileUrl): string
 {
     if (!empty($fileName['picture']) && $fileName['picture']['error'] !== 4) {
         $file_name = $fileName['picture']['name'];
-        $file_path = __DIR__ . '/uploads/img_posts/';
+        $file_path = __DIR__ . '/uploads/';
 
         move_uploaded_file($fileName['picture']['tmp_name'], $file_path . $file_name);
 
-        return '/uploads/img_posts/' . $file_name;
+        return '/uploads/' . $file_name;
     }
 
     $image_content = file_get_contents($_POST[$fileUrl]);
@@ -36,16 +36,18 @@ function uploadImage($fileName, $fileUrl): string
     return '/uploads/img_posts/' . $file_name;
 }
 
+$errors = [];
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $validateGeneral = checkTypeGeneral('heading', 'tags');
-
     switch ($_POST['form-type']) {
         case CONTENT_PHOTO:
             $validate = checkTypePhoto( 'photo-url');
-            $errors[] = array_merge($validateGeneral, $validate);
+            $errors = array_merge($validateGeneral, $validate);
 
-            if(empty(reset($errors))) {
+
+            if(empty($errors)) {
                 $fileUrl = uploadImage($_FILES, 'photo-url');
                 $postId = addPost($_POST, $fileUrl);
 
@@ -59,9 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
         case CONTENT_VIDEO:
             $validate = checkTypeVideo('content');
-            $errors[] = array_merge($validateGeneral, $validate);
+            $errors = array_merge($validateGeneral, $validate);
 
-            if(empty(reset($errors))) {
+            if(empty($errors)) {
                 $postId = addPost($_POST);
 
                 if(!empty($_POST['tags'])) {
@@ -74,9 +76,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
         case CONTENT_TEXT:
             $validate = checkTypeText('content');
-            $errors[] = array_merge($validateGeneral, $validate);
+            $errors = array_merge($validateGeneral, $validate);
 
-            if(empty(reset($errors))) {
+            if(empty($errors)) {
                 $postId = addPost($_POST);
 
                 if(!empty($_POST['tags'])) {
@@ -89,9 +91,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
         case CONTENT_QUOTE:
             $validate = checkTypeQuote('content', 'quote-author');
-            $errors[] = array_merge($validateGeneral, $validate);
+            $errors = array_merge($validateGeneral, $validate);
 
-            if(empty(reset($errors))) {
+            if(empty($errors)) {
                 $postId = addPost($_POST);
 
                 if(!empty($_POST['tags'])) {
@@ -104,9 +106,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
         case CONTENT_LINK:
             $validate = checkTypeLink('content');
-            $errors[] = array_merge($validateGeneral, $validate);
+            $errors = array_merge($validateGeneral, $validate);
 
-            if(empty(reset($errors))) {
+            if(empty($errors)) {
                 $postId = addPost($_POST);
 
                 if(!empty($_POST['tags'])) {
@@ -124,10 +126,10 @@ $typeAdding = takesGetDataDb(sprintf('SELECT * FROM type_posts WHERE id = %s', x
 
 $types = getDataDb('SELECT * FROM type_posts');
 
-$type_post = reset($typeAdding)['class_name'];
+$type_post = $typeAdding[0]['class_name'];
 
 $type_active = include_template('add-post/' . $type_post . '.php', [
-    'errors' => reset($errors),
+    'errors' => $errors,
 ]);
 
 $page_content = include_template('adding-post.php', [

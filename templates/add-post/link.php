@@ -6,7 +6,7 @@
                 <div class="adding-post__input-wrapper form__input-wrapper">
                     <label class="adding-post__label form__label" for="link-heading">Заголовок <span class="form__input-required">*</span></label>
                     <div class="form__input-section <?=(!empty($errors['heading'])) ? "form__input-section--error" : ""?>">
-                        <input class="adding-post__input form__input" id="link-heading" type="text" name="heading" placeholder="Введите заголовок" value="<?=htmlspecialchars($_POST['heading']) ?? ''?>">
+                        <input class="adding-post__input form__input" id="link-heading" type="text" name="heading" placeholder="Введите заголовок" value="<?= !empty($_POST['heading']) ? htmlspecialchars($_POST['heading']) : ''?>">
                         <button class="form__error-button button" type="button">!<span class="visually-hidden">Информация об ошибке</span></button>
                         <div class="form__error-text">
                             <h3 class="form__error-title">Информация об ошибке</h3>
@@ -17,7 +17,7 @@
                 <div class="adding-post__textarea-wrapper form__input-wrapper">
                     <label class="adding-post__label form__label" for="post-link">Ссылка <span class="form__input-required">*</span></label>
                     <div class="form__input-section <?=(!empty($errors['content'])) ? "form__input-section--error" : ""?>">
-                        <input class="adding-post__input form__input" id="post-link" type="text" name="content" placeholder="Введите ссылку" value="<?=htmlspecialchars($_POST['content']) ?? ''?>">
+                        <input class="adding-post__input form__input" id="post-link" type="text" name="content" placeholder="Введите ссылку" value="<?=!empty($_POST['content']) ? htmlspecialchars($_POST['content']) : ''?>">
                         <button class="form__error-button button" type="button">!<span class="visually-hidden">Информация об ошибке</span></button>
                         <div class="form__error-text">
                             <h3 class="form__error-title">Информация об ошибке</h3>
@@ -28,7 +28,7 @@
                 <div class="adding-post__input-wrapper form__input-wrapper">
                     <label class="adding-post__label form__label" for="link-tags">Теги</label>
                     <div class="form__input-section <?=(!empty($errors['tags'])) ? "form__input-section--error" : ""?>">
-                        <input class="adding-post__input form__input" id="link-tags" type="text" name="tags" placeholder="Введите тег" value="<?=htmlspecialchars($_POST['tags']) ?? ''?>">
+                        <input class="adding-post__input form__input" id="link-tags" type="text" name="tags" placeholder="Введите тег" value="<?=!empty($_POST['tags']) ? htmlspecialchars($_POST['tags']) : ''?>">
                         <button class="form__error-button button" type="button">!<span class="visually-hidden">Информация об ошибке</span></button>
                         <div class="form__error-text">
                             <h3 class="form__error-title">Информация об ошибке</h3>
@@ -58,4 +58,3 @@
         </div>
     </form>
 </section>
-

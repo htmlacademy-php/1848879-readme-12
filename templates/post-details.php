@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="page__title page__title--publication"><?=$post['title']?></h1>
+    <h1 class="page__title page__title--publication"><?= $post['title'] ?></h1>
     <section class="post-details">
         <h2 class="visually-hidden">Публикация</h2>
         <div class="post-details__wrapper post-photo">
@@ -32,20 +32,23 @@
                             <span class="visually-hidden">количество репостов</span>
                         </a>
                     </div>
-                    <span class="post__view"><?=$post['views_amount'] ?> просмотров</span>
+                    <span class="post__view"><?= $post['views_amount'] ?> просмотров</span>
                 </div>
-                <ul class="post__tags">
-                    <?php foreach ($tags as $tag):?>
-                        <li><a href="#"><?=$tag['title']?></a></li>
-                    <?php endforeach;?>
-                </ul>
+                <?php if ($tags) : ?>
+                    <ul class="post__tags">
+                        <?php foreach ($tags as $tag): ?>
+                            <li><a href="#"><?= $tag['title'] ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif ?>
                 <div class="comments">
                     <form class="comments__form form" action="#" method="post">
                         <div class="comments__my-avatar">
                             <img class="comments__picture" src="/img/userpic-medium.jpg" alt="Аватар пользователя">
                         </div>
                         <div class="form__input-section form__input-section--error">
-                            <textarea class="comments__textarea form__textarea form__input" placeholder="Ваш комментарий"></textarea>
+                            <textarea class="comments__textarea form__textarea form__input"
+                                      placeholder="Ваш комментарий"></textarea>
                             <label class="visually-hidden">Ваш комментарий</label>
                             <button class="form__error-button button" type="button">!</button>
                             <div class="form__error-text">
@@ -60,7 +63,8 @@
                             <li class="comments__item user">
                                 <div class="comments__avatar">
                                     <a class="user__avatar-link" href="#">
-                                        <img class="comments__picture" src="/img/userpic-larisa.jpg" alt="Аватар пользователя">
+                                        <img class="comments__picture" src="/img/userpic-larisa.jpg"
+                                             alt="Аватар пользователя">
                                     </a>
                                 </div>
                                 <div class="comments__info">
@@ -78,7 +82,8 @@
                             <li class="comments__item user">
                                 <div class="comments__avatar">
                                     <a class="user__avatar-link" href="#">
-                                        <img class="comments__picture" src="/img/userpic-larisa.jpg" alt="Аватар пользователя">
+                                        <img class="comments__picture" src="/img/userpic-larisa.jpg"
+                                             alt="Аватар пользователя">
                                     </a>
                                 </div>
                                 <div class="comments__info">
@@ -89,7 +94,11 @@
                                         <time class="comments__time" datetime="2019-03-18">2 дня назад</time>
                                     </div>
                                     <p class="comments__text">
-                                        Озеро Байкал – огромное древнее озеро в горах Сибири к северу от монгольской границы. Байкал считается самым глубоким озером в мире. Он окружен сетью пешеходных маршрутов, называемых Большой байкальской тропой. Деревня Листвянка, расположенная на западном берегу озера, – популярная отправная точка для летних экскурсий. Зимой здесь можно кататься на коньках и собачьих упряжках.
+                                        Озеро Байкал – огромное древнее озеро в горах Сибири к северу от монгольской
+                                        границы. Байкал считается самым глубоким озером в мире. Он окружен сетью
+                                        пешеходных маршрутов, называемых Большой байкальской тропой. Деревня Листвянка,
+                                        расположенная на западном берегу озера, – популярная отправная точка для летних
+                                        экскурсий. Зимой здесь можно кататься на коньках и собачьих упряжках.
                                     </p>
                                 </div>
                             </li>
@@ -105,12 +114,13 @@
                 <div class="post-details__user-info user__info">
                     <div class="post-details__avatar user__avatar">
                         <a class="post-details__avatar-link user__avatar-link" href="#">
-                            <img class="post-details__picture user__picture" src="/img/<?=$users[$post['user_id'] - 1]['avatar_url']?>" alt="Аватар пользователя">
+                            <img class="post-details__picture user__picture"
+                                 src="/img/<?= $users[$post['user_id'] - 1]['avatar_url'] ?>" alt="Аватар пользователя">
                         </a>
                     </div>
                     <div class="post-details__name-wrapper user__name-wrapper">
                         <a class="post-details__name user__name" href="#">
-                            <span><?=$users[$post['user_id'] - 1]['name']?></span>
+                            <span><?= $users[$post['user_id'] - 1]['name'] ?></span>
                         </a>
                         <time class="post-details__time user__time" datetime="2014-03-20">5 лет на сайте</time>
                     </div>
@@ -126,7 +136,9 @@
                     </p>
                 </div>
                 <div class="post-details__user-buttons user__buttons">
-                    <button class="user__button user__button--subscription button button--main" type="button">Подписаться</button>
+                    <button class="user__button user__button--subscription button button--main" type="button">
+                        Подписаться
+                    </button>
                     <a class="user__button user__button--writing button button--green" href="#">Сообщение</a>
                 </div>
             </div>

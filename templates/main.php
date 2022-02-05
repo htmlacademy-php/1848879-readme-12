@@ -76,7 +76,7 @@
                                 <p>
                                     <?= htmlspecialchars($card['content']) ?>
                                 </p>
-                                <cite><?= htmlspecialchars($card['author_quote']) ?></cite>
+                                <cite><?= $card['author_quote'] ?></cite>
                             </blockquote>
                             <?php
                             break; ?>
@@ -139,7 +139,8 @@
                     <div class="post__author">
                         <a class="post__author-link" href="#" title="<?= $card['name'] ?>">
                             <div class="post__avatar-wrapper">
-                                <img class="post__author-avatar" src="img/<?= $users[$card['user_id'] - 1]['avatar_url'] ?>"
+                                <img class="post__author-avatar"
+                                     src="img/<?= $users[$card['user_id'] - 1]['avatar_url'] ?>"
                                      alt="Аватар пользователя">
                             </div>
                             <div class="post__info">
