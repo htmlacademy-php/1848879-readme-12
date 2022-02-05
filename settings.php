@@ -11,7 +11,7 @@ require_once('functions/helpers.php');
 require_once('functions/functions.php');
 
 /**
- * скл функции, от туда идет запрос подключения к бд
+ * Скл функции, от туда идет запрос подключения к бд
  * в папке config/connect.php хранится информация к доступу к бд
  */
 require_once('functions/sql_functions.php');
@@ -25,3 +25,13 @@ require_once('functions/filters_form.php');
  * Добавление формы
  */
 require_once('functions/add_post.php');
+
+/**
+ * Проверка Регистрации
+ */
+require_once('functions/registration_validators.php');
+
+/**
+ * Добавление пользователя
+ */
+require_once('functions/addUser.php');

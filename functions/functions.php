@@ -3,9 +3,9 @@
 /**
  * Функция принимает строку и если она больше
  * 300 символов то обрезает ее и добавляет ссылку
- * @param string $text принимает текст и дальше функция
- * проверяет соответствует ли она длинне
- * @param int $long допустимое кол-во символов, по умолчанию 300
+ * @param string $text Принимает текст и дальше функция
+ * проверяет соответствовать ли она длинне
+ * @param int $long Допустимое кол-во символов, по умолчанию 300
  * @return string
  */
 function cropping_text(string $text, int $long = 300): string
@@ -141,7 +141,7 @@ function getCode404(): string
 
 /**
  * Принимает имя input и отдает название имя поля, где ошибка
- * @param string $name имя поля где ошибка
+ * @param string $name Имя поля, где ошибка
  * @return string
  */
 function checkNameError(string $name): string

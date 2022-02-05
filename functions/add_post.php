@@ -1,24 +1,6 @@
 <?php
 
 /**
- * Возвращает числовой get id параметр приведенный
- * @param array $params
- * @return int|null
- */
-function getIdFromParams(array $params): ?int
-{
-    if (!isset($params['id'])) {
-        return null;
-    }
-
-    if (!is_numeric($params['id'])) {
-        exit('Неверный параметр в запросе');
-    }
-
-    return (int)$params['id'];
-}
-
-/**
  * Возвращает массив хештегов
  * @param $hashtags
  * @return array
@@ -29,16 +11,16 @@ function hashtagArray($hashtags): array
 }
 
 /**
- * Добавляет хештег к позданному посту
+ * Добавляет хештег к заданному посту
  * @param array $hashtag
- * @param $lastPostId
+ * @param int $lastPostId
  */
 function addHashtag(array $hashtag, int $lastPostId)
 {
     $connection = mysqli_connect(HOST, USER, PASS, NAME);
 
     foreach ($hashtag as $tag) {
-        $sql = "INSERT INTO `hashtags` (post_id, title) VALUES ('{$lastPostId}', '{$tag}')";
+        $sql = "INSERT INTO `hashtags` (post_id, title) VALUES ('$lastPostId', '$tag')";
         $result = mysqli_query($connection, $sql);
 
         if (!$result) {
@@ -73,7 +55,7 @@ function addPost(array $dataPost, $fileUrl = null)
         $author = getSafePost($dataPost['quote-author']);
     }
 
-    $sql = "INSERT INTO `posts` (user_id, title, type_id, content, author_quote, date, views_amount) VALUES (1, '{$header}', '{$type_id}', '{$content}', '{$author}', NOW(), 0)";
+    $sql = "INSERT INTO `posts` (user_id, title, type_id, content, author_quote, date, views_amount) VALUES (1, '$header', '$type_id', '$content', '$author', NOW(), 0)";
 
     if (mysqli_query($con, $sql)) {
         var_dump("Данные успешно добавлены");
@@ -81,5 +63,5 @@ function addPost(array $dataPost, $fileUrl = null)
         var_dump("Ошибка: " . mysqli_error($con));
     }
 
-    return mysqli_insert_id($con);;
+    return mysqli_insert_id($con);
 }

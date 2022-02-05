@@ -6,7 +6,7 @@ INSERT INTO type_posts (title, class_name) VALUES ('Ссылка', 'link');
 
 INSERT INTO users (email, name,  password, avatar_url) VALUES ('larisa@example.com', 'Лариса', 'qwerty1', 'userpic-larisa-small.jpg');
 INSERT INTO users (email, name,  password, avatar_url) VALUES ('vladik@example.com', 'Владик', 'qwerty123', 'userpic.jpg');
-INSERT INTO users (email, name,  password, avatar_url) VALUES ('виктор@пример.рф', 'Виктор', 'qwer1', 'userpic-mark.jpg');
+INSERT INTO users (email, name,  password, avatar_url) VALUES ('виктор@пример.рф', 'Виктор', 'qwerty1', 'userpic-mark.jpg');
 
 INSERT INTO posts (user_id, title, type_id, content, author_quote, date, views_amount) VALUES (1, 'Цитата', 4, 'Мы в жизни любим только раз, а после ищем лишь похожих', 'Пушкин', '2021-07-22 16:00', 25);
 INSERT INTO posts (user_id, title, type_id, content, date, views_amount) VALUES (2, 'Игра престолов', 3, 'Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!Не могу дождаться начала финального сезона своего любимого сериала!', '2021-07-22 15:25', 20);
