@@ -5,20 +5,20 @@ require_once 'config/connect.php';
 /**
  * Функция принимает sql запрос и отдает готовый массив из бд
  * @param string $sql Sql запрос
- * @return array
+ * @return array|false
  */
-function getDataDb(string $sql): array
+function getDataDb(string $sql): array|false
 {
     $con = mysqli_connect(HOST, USER, PASS, NAME);
     mysqli_set_charset($con, "utf8");
 
     $result = mysqli_query($con, $sql);
 
-    if(!$result) {
-        print(sprintf('Ошибка подключения: %s', mysqli_connect_error()));
+    if($result) {
+        return  mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
 
-    return  mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return false;
 }
 
 /**

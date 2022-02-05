@@ -35,7 +35,9 @@ if (!empty($_GET['type_post'])) {
         )
     );
 
-    $sortingParameters = reset($cards)['class_name'];
+    if (!empty($cards[0])) {
+        $sortingParameters = $cards[0]['class_name'];
+    }
 }
 
 $page_content = include_template('main.php', [

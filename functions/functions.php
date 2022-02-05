@@ -45,50 +45,50 @@ function time_has_passed(string $time): string
     $time_post = strtotime($time);
     $time_now = strtotime(date("Y-m-d H:i:s"));
 
-    define("MINUTE", 60);
-    define("HOUR", MINUTE * 60);
-    define("DAY", HOUR * 24);
-    define("WEEK", DAY * 7);
-    define("MONTH", DAY * 30);
+    $MINUTE = 60;
+    $HOUR = $MINUTE * 60;
+    $DAY = $HOUR * 24;
+    $WEEK = $DAY * 7;
+    $MONTH = $DAY * 30;
 
-    define("DAY_IN_MINUTES", 1440);
-    define("HOUR_IN_MINUTE", 60);
-    define("WEEK_IN_MINUTES", DAY_IN_MINUTES * 7);
-    define("FIVE_WEEKS", WEEK_IN_MINUTES * 5);
+    $DAY_IN_MINUTES = 1440;
+    $HOUR_IN_MINUTE = 60;
+    $WEEK_IN_MINUTES = $DAY_IN_MINUTES * 7;
+    $FIVE_WEEKS = $WEEK_IN_MINUTES * 5;
 
 
-    $time_difference = floor(($time_now - $time_post) / MINUTE);
+    $time_difference = floor(($time_now - $time_post) / $MINUTE);
     $time_total = '';
 
-    if ($time_difference < HOUR_IN_MINUTE) {
+    if ($time_difference < $HOUR_IN_MINUTE) {
         $time_total =
             $time_difference . ' ' .
             get_noun_plural_form($time_difference, 'минута', 'минуты', 'минут') .
             ' назад';
     }
-    elseif ($time_difference >= HOUR_IN_MINUTE && $time_difference < DAY_IN_MINUTES) {
-        $hours = floor(($time_now - $time_post) / HOUR);
+    elseif ($time_difference < $DAY_IN_MINUTES) {
+        $hours = floor(($time_now - $time_post) / $HOUR);
 
         $time_total =
             $hours . ' ' .
             get_noun_plural_form($hours, 'час', 'часа', 'часов') .
             ' назад';
-    } elseif ($time_difference >= DAY_IN_MINUTES && $time_difference < WEEK_IN_MINUTES) {
-        $days = floor(($time_now - $time_post) / DAY);
+    } elseif ($time_difference < $WEEK_IN_MINUTES) {
+        $days = floor(($time_now - $time_post) / $DAY);
 
         $time_total =
             $days . ' ' .
             get_noun_plural_form($days, 'день', 'дня', 'дней') .
             ' назад';
-    } elseif ($time_difference >= WEEK_IN_MINUTES && $time_difference < FIVE_WEEKS) {
-        $weeks = floor(($time_now - $time_post) / WEEK);
+    } elseif ($time_difference < $FIVE_WEEKS) {
+        $weeks = floor(($time_now - $time_post) / $WEEK);
 
         $time_total =
             $weeks . ' ' .
             get_noun_plural_form($weeks, 'неделю', 'недели', 'недель') .
             ' назад';
-    } elseif ($time_difference >= FIVE_WEEKS) {
-        $months = floor(($time_now - $time_post) / MONTH);
+    } elseif ($time_difference >= $FIVE_WEEKS) {
+        $months = floor(($time_now - $time_post) / $MONTH);
 
         $time_total =
             $months . ' ' .

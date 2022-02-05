@@ -1,7 +1,6 @@
 # Личный проект «Readme»
 
 * Студент: [Владислав Вячеславович](https://up.htmlacademy.ru/php/12/user/1848879).
-* Наставник: [Юлия Новикова](https://htmlacademy.ru/profile/id816363).
 
 ---
 
