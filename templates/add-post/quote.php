@@ -1,6 +1,6 @@
 <section class="adding-post__quote tabs__content tabs__content--active">
     <h2 class="visually-hidden">Форма добавления цитаты</h2>
-    <form class="adding-post__form form" action="/add.php?adding-type_id=4" method="POST">
+    <form class="adding-post__form form" action="/add/index.php?adding-type_id=4" method="POST">
         <div class="form__text-inputs-wrapper">
             <div class="form__text-inputs">
                 <div class="adding-post__input-wrapper form__input-wrapper">

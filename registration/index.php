@@ -1,6 +1,6 @@
 <?php
 
-require_once('settings.php');
+require_once( dirname(__DIR__) . '/settings.php');
 
 $errors = [];
 
@@ -34,7 +34,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fileUrl = null;
     $validate = checkRegister($_POST);
 
-    $errors[] = $validate;
+    $errors = $validate;
 
     if(empty(array_filter($errors))){
         if(!empty($_FILES['picture']['name'])) {
@@ -46,14 +46,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 $page_content = include_template('registration.php', [
-    'errors' => reset($errors),
+    'errors' => $errors,
 ]);
 
 $layout_content = include_template('layout.php', [
     'content' => $page_content,
-    'title' => 'readme: популярное',
-    'is_auth' => rand(0, 1),
-    'user_name' => 'Владислав',
+    'title' => 'readme: Регистрация',
 ]);
 
 print($layout_content);

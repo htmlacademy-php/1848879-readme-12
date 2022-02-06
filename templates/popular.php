@@ -36,7 +36,7 @@
             <b class="popular__filters-caption filters__caption">Тип контента:</b>
             <ul class="popular__filters-list filters__list">
                 <li class="popular__filters-item popular__filters-item--all filters__item filters__item--all">
-                    <a href="/"
+                    <a href="/popular/"
                        class="filters__button filters__button--ellipse filters__button--all <?= ($sortingParameters === 'all') ?
                            'filters__button--active' : ""; ?>">
                         <span>Все</span>
@@ -46,7 +46,7 @@
                 foreach ($types as $type): ?>
                     <li class="popular__filters-item filters__item">
                         <a class="filters__button filters__button--<?= $type['class_name'] ?> <?= ($sortingParameters === $type['class_name']) ?
-                            'filters__button--active' : ""; ?> button" href="/index.php?type_post=<?= $type['id'] ?>">
+                            'filters__button--active' : ""; ?> button" href="/popular/?type_post=<?= $type['id'] ?>">
                             <span class="visually-hidden"><?= $type['class_name'] ?></span>
                             <svg class="filters__icon" width="22" height="18">
                                 <use xlink:href="#icon-filter-<?= $type['class_name'] ?>"></use>
@@ -63,7 +63,7 @@
         foreach ($cards as $card): ?>
             <article class="popular__post post post-<?= $types[$card['type_id'] - 1]['class_name'] ?>">
                 <header class="post__header">
-                    <a href="<?= '/post.php?post_id=' . $card['id'] ?>">
+                    <a href="<?= '/index.php?post_id=' . $card['id'] ?>">
                         <h2><?= htmlspecialchars($card['title']) ?></h2>
                     </a>
                 </header>
@@ -140,7 +140,7 @@
                         <a class="post__author-link" href="#" title="<?= $card['name'] ?>">
                             <div class="post__avatar-wrapper">
                                 <img class="post__author-avatar"
-                                     src="img/<?= $users[$card['user_id'] - 1]['avatar_url'] ?>"
+                                     src="/assets/img/<?= $users[$card['user_id'] - 1]['avatar_url'] ?>"
                                      alt="Аватар пользователя">
                             </div>
                             <div class="post__info">

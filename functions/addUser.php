@@ -5,6 +5,7 @@
  * @param array $dataPost метод POST
  * @param $fileUrl, если есть картинка
  */
+
 function addUser(array $dataPost, $fileUrl = null)
 {
     $con = mysqli_connect(HOST, USER, PASS, NAME);

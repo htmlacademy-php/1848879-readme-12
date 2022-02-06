@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title; ?></title>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body class="page">
 <div style="display: none">
@@ -102,7 +102,7 @@
     <div class="header__wrapper container">
         <div class="header__logo-wrapper">
             <a class="header__logo-link" href="/">
-                <img class="header__logo" src="/img/logo.svg" alt="Логотип readme" width="128" height="24">
+                <img class="header__logo" src="/assets/img/logo.svg" alt="Логотип readme" width="128" height="24">
             </a>
             <p class="header__topic">
                 micro blogging
@@ -121,38 +121,35 @@
             </div>
         </form>
         <div class="header__nav-wrapper">
-            <!-- здесь должен быть PHP код, который показывает следующий тег по условию -->
-            <?php if ($is_auth): ?>
+            <?php if ($_SESSION): ?>
                 <nav class="header__nav">
                 <ul class="header__my-nav">
                     <li class="header__my-page header__my-page--popular">
-                        <a href="/" class="header__page-link header__page-link--active" title="Популярный контент">
+                        <a href="/popular/" class="header__page-link header__page-link--active" title="Популярный контент">
                             <span class="visually-hidden">Популярный контент</span>
                         </a>
                     </li>
                     <li class="header__my-page header__my-page--feed">
-                        <a class="header__page-link" href="/pages/feed.html" title="Моя лента">
+                        <a class="header__page-link" href="/" title="Моя лента">
                             <span class="visually-hidden">Моя лента</span>
                         </a>
                     </li>
                     <li class="header__my-page header__my-page--messages">
-                        <a class="header__page-link" href="/pages/messages.html" title="Личные сообщения">
+                        <a class="header__page-link" href="#" title="Личные сообщения">
                             <span class="visually-hidden">Личные сообщения</span>
                         </a>
                     </li>
                 </ul>
-                <!-- здесь должен быть PHP код, который показывает следующий тег по условию -->
                 <ul class="header__user-nav">
                     <li class="header__profile">
                         <a class="header__profile-link" href="#">
                             <div class="header__avatar-wrapper">
-                                <img class="header__profile-avatar" src="/img/userpic-medium.jpg"
+                                <img class="header__profile-avatar" src="/assets/img/userpic-medium.jpg"
                                      alt="Аватар профиля">
                             </div>
                             <div class="header__profile-name">
                                 <span>
-                                    <!--здесь должно быть имя пользователя-->
-                                    <?= $user_name ?>
+                                    <?= $_SESSION['name'] ?>
                                 </span>
                                 <svg class="header__link-arrow" width="10" height="6">
                                     <use xlink:href="#icon-arrow-right-ad"></use>
@@ -179,7 +176,7 @@
                                     </li>
 
                                     <li class="header__profile-nav-item">
-                                        <a class="header__profile-nav-link" href="#">
+                                        <a class="header__profile-nav-link" href="/logout/">
                           <span class="header__profile-nav-text">
                             Выход
                           </span>
@@ -191,16 +188,17 @@
                     </li>
                     <li>
                         <a class="header__post-button button button--transparent"
-                           href="/add.php?adding-type_id=1">Пост</a>
+                           href="/add/index.php?adding-type_id=1">Пост</a>
                     </li>
                 </ul>
             <?php else: ?>
                 <ul class="header__user-nav">
                     <li class="header__authorization">
-                        <a class="header__user-button header__authorization-button button" href="/">Вход</a>
+                        <a class="header__user-button header__authorization-button button" href="/login/">Вход</a>
                     </li>
                     <li>
-                        <a href="registration.php" class="header__user-button header__user-button--active header__register-button button">Регистрация</a>
+                        <a href="/registration/"
+                           class="header__user-button header__user-button--active header__register-button button">Регистрация</a>
                     </li>
                 </ul>
                 </nav>
@@ -248,10 +246,10 @@
             <div class="footer__my-info">
                 <ul class="footer__my-pages">
                     <li class="footer__my-page footer__my-page--feed">
-                        <a class="footer__page-link" href="/pages/feed.html">Моя лента</a>
+                        <a class="footer__page-link" href="/">Моя лента</a>
                     </li>
                     <li class="footer__my-page footer__my-page--popular">
-                        <a class="footer__page-link" href="/">Популярный контент</a>
+                        <a class="footer__page-link" href="/popular/">Популярный контент</a>
                     </li>
                     <li class="footer__my-page footer__my-page--messages">
                         <a class="footer__page-link" href="/pages/messages.html">Личные сообщения</a>
@@ -269,7 +267,7 @@
         </div>
     </div>
 </footer>
-<script src="/libs/dropzone.js"></script>
+<script src="/assets/libs/dropzone.js"></script>
 <!--<script src="/js/dropzone-settings.js"></script>-->
 <!--<script src="/js/main.js"></script>-->
 </body>

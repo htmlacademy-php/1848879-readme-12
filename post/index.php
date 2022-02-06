@@ -31,8 +31,6 @@ $page_content = include_template('post-details.php', [
 $layout_content = include_template('layout.php', [
     'content' => $page_content,
     'title' => 'readme: популярное',
-    'is_auth' => rand(0, 1),
-    'user_name' => 'Владислав',
 ]);
 
 print($layout_content);

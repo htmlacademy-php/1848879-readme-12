@@ -1,6 +1,6 @@
 <?php
 
-require_once 'validators/form_general.php';
+require_once 'form_general.php';
 
 /**
  * Проверяет email

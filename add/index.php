@@ -1,6 +1,6 @@
 <?php
 
-require_once('settings.php');
+require_once dirname(__DIR__) . '/settings.php';
 
 const CONTENT_PHOTO = 1;
 const CONTENT_VIDEO = 2;
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     addHashtag(hashtagArray($_POST['tags']), $postId);
                 }
 
-                $URL = '/post.php?post_id=' . $postId;
+                $URL = '/index.php?post_id=' . $postId;
                 header("Location: $URL");
             }
             break;
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     addHashtag(hashtagArray($_POST['tags']), $postId);
                 }
 
-                $URL = '/post.php?post_id=' . $postId;
+                $URL = '/index.php?post_id=' . $postId;
                 header("Location: $URL");
             }
             break;
@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     addHashtag(hashtagArray($_POST['tags']), $postId);
                 }
 
-                $URL = '/post.php?post_id=' . $postId;
+                $URL = '/index.php?post_id=' . $postId;
                 header("Location: $URL");
             }
             break;
@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     addHashtag(hashtagArray($_POST['tags']), $postId);
                 }
 
-                $URL = '/post.php?post_id=' . $postId;
+                $URL = '/index.php?post_id=' . $postId;
                 header("Location: $URL");
             }
             break;
@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     addHashtag(hashtagArray($_POST['tags']), $postId);
                 }
 
-                $URL = '/post.php?post_id=' . $postId;
+                $URL = '/index.php?post_id=' . $postId;
                 header("Location: $URL");
             }
             break;
@@ -141,8 +141,6 @@ $page_content = include_template('adding-post.php', [
 $layout_content = include_template('layout.php', [
     'content' => $page_content,
     'title' => 'Добавить публикацию',
-    'is_auth' => rand(0, 1),
-    'user_name' => 'Владислав',
 ]);
 
 print($layout_content);

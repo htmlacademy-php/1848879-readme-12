@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * Функция проверяет массив полей логина на заполненность
+ * @param array $arrs Массив полей логина
+ * @return array|bool
+ */
+
+function getEmpty(array $arrs) : array|bool {
+    $error = [];
+
+    foreach ($arrs as $arr) {
+        if (empty($_POST[$arr])) {
+            $error[$arr] = 'Поле не заполнено';
+        }
+    }
+
+    return $error;
+}
+
+/**
+ * Функция проверяет существование емеила
+ * @param string $email Получает емеил адрес
+ * @return array|string
+ */
+function searchEmail(string $email): array|string
+{
+    $conn = mysqli_connect(HOST, USER, PASS, NAME);
+
+    $sql = "SELECT id, email, password, name FROM users WHERE email=? LIMIT 1";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+
+    if (!$user) {
+        return false;
+    }
+
+    return $user;
+}
