@@ -1,6 +1,6 @@
 <?php
 
-require_once 'config/connect.php';
+require_once dirname(__DIR__) . '/config/connect.php';
 
 /**
  * Функция принимает sql запрос и отдает готовый массив из бд

@@ -27,9 +27,9 @@ CREATE TABLE posts
   title        VARCHAR(128) NOT NULL,
   type_id      INT          NOT NULL,
   content      TEXT         NOT NULL,
-  author_quote VARCHAR(128),
   date         TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   views_amount INT          NOT NULL,
+  author_quote VARCHAR(255),
   FOREIGN KEY (user_id) REFERENCES users (id),
   FOREIGN KEY (type_id) REFERENCES type_posts (id)
 );

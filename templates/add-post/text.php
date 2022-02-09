@@ -1,6 +1,6 @@
 <section class="adding-post__text tabs__content tabs__content--active">
     <h2 class="visually-hidden">Форма добавления текста</h2>
-    <form class="adding-post__form form" action="/add.php?adding-type_id=3" method="POST">
+    <form class="adding-post__form form" action="/add/index.php?adding-type_id=3" method="POST">
         <div class="form__text-inputs-wrapper">
             <div class="form__text-inputs">
                 <div class="adding-post__input-wrapper form__input-wrapper">
