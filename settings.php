@@ -41,4 +41,14 @@ require_once('functions/addUser.php');
  */
 require_once('functions/validators/login.php');
 
+/**
+ * Проверка Авторизирован пользователь
+ */
+require_once('functions/get_authorized_user.php');
+
+/**
+ * Проверка какой тип
+ */
+require_once('functions/get_active_type.php');
+
 session_start();

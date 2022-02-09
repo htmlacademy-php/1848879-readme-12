@@ -40,3 +40,43 @@ function searchEmail(string $email): array|string
 
     return $user;
 }
+
+function searchErrorsLogin() {
+    $errors = [];
+    $authorized = false;
+
+    $searchEmpty = getEmpty(['email', 'password']);
+
+    if (empty($searchEmpty)) {
+
+        $user = searchEmail(getSafePost($_POST['email']));
+
+        if (!$user) {
+            $errors['email'] = 'email не найден';
+        }
+
+        if ($user && password_verify(getSafePost($_POST['password']), $user['password'])) {
+            $authorized = true;
+
+        } else {
+            $errors['password'] = 'пароль неверный';
+        }
+    } else {
+        $errors = $searchEmpty;
+    }
+
+    if (empty($errors)) {
+        $user = searchEmail(getSafePost($_POST['email']));
+
+        session_start();
+
+        setcookie('visit', $user['email'], time() + (60 * 60 * 24 * 30), '/');
+
+        $_SESSION['id'] = $user['id'];
+        $_SESSION['name'] = $user['name'];
+
+        header('Location:/');
+    }
+
+    return $errors;
+}

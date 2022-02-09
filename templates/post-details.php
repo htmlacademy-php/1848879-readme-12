@@ -115,7 +115,7 @@
                     <div class="post-details__avatar user__avatar">
                         <a class="post-details__avatar-link user__avatar-link" href="#">
                             <img class="post-details__picture user__picture"
-                                 src="/img/<?= $users[$post['user_id'] - 1]['avatar_url'] ?>" alt="Аватар пользователя">
+                                 src="/assets/img/<?= $users[$post['user_id'] - 1]['avatar_url'] ?>" alt="Аватар пользователя">
                         </a>
                     </div>
                     <div class="post-details__name-wrapper user__name-wrapper">

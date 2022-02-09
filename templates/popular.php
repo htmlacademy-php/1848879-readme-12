@@ -63,11 +63,10 @@
         foreach ($cards as $card): ?>
             <article class="popular__post post post-<?= $types[$card['type_id'] - 1]['class_name'] ?>">
                 <header class="post__header">
-                    <a href="<?= '/index.php?post_id=' . $card['id'] ?>">
+                    <a href="<?= '/post/?post_id=' . $card['id'] ?>">
                         <h2><?= htmlspecialchars($card['title']) ?></h2>
                     </a>
                 </header>
-
                 <div class="post__main">
                     <?php
                     switch (getTypeID($card['type_id'])):
@@ -140,7 +139,7 @@
                         <a class="post__author-link" href="#" title="<?= $card['name'] ?>">
                             <div class="post__avatar-wrapper">
                                 <img class="post__author-avatar"
-                                     src="/assets/img/<?= $users[$card['user_id'] - 1]['avatar_url'] ?>"
+                                     src="<?= $users[$card['user_id'] - 1]['avatar_url'] ?>"
                                      alt="Аватар пользователя">
                             </div>
                             <div class="post__info">

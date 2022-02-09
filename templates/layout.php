@@ -1,3 +1,12 @@
+<?php
+    require_once dirname(__DIR__) . '/functions/get_active_menu.php';
+    require_once dirname(__DIR__) . '/functions/get_authorized_user.php';
+    require_once dirname(__DIR__) . '/functions/get_header_menu.php';
+
+    $menu = getMenuHeader();
+?>
+
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -124,21 +133,13 @@
             <?php if ($_SESSION): ?>
                 <nav class="header__nav">
                 <ul class="header__my-nav">
-                    <li class="header__my-page header__my-page--popular">
-                        <a href="/popular/" class="header__page-link header__page-link--active" title="Популярный контент">
-                            <span class="visually-hidden">Популярный контент</span>
+                    <?php foreach ($menu as $key => $values) : ?>
+                    <li class="header__my-page header__my-page--<?=$key?>">
+                        <a href="<?=$values['link']?>" class="header__page-link <?= getActiveMenu($values['link']) ? 'header__page-link--active' : ''?>" title="<?=$values['title']?>">
+                            <span class="visually-hidden"><?=$values['title']?></span>
                         </a>
                     </li>
-                    <li class="header__my-page header__my-page--feed">
-                        <a class="header__page-link" href="/" title="Моя лента">
-                            <span class="visually-hidden">Моя лента</span>
-                        </a>
-                    </li>
-                    <li class="header__my-page header__my-page--messages">
-                        <a class="header__page-link" href="#" title="Личные сообщения">
-                            <span class="visually-hidden">Личные сообщения</span>
-                        </a>
-                    </li>
+                    <?php endforeach;?>
                 </ul>
                 <ul class="header__user-nav">
                     <li class="header__profile">

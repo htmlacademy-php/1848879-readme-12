@@ -25,7 +25,7 @@
                 <label class="login__label form__label" for="login-password">Пароль</label>
                 <div class="form__input-section">
                     <input class="login__input form__input" id="login-password" type="password" name="password"
-                           placeholder="Введите пароль">
+                           placeholder="Введите пароль" value="<?= !empty($_POST['password']) ? $_POST['password']: '' ?>">
 
                     <button class="form__error-button button button--main" <?= !empty($errors['password']) ? 'style="display: inline"' : '' ?> type="button">!
                         <span class="visually-hidden">Информация об ошибке</span>
